@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="vi" class="light scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiến Thức Doanh Nghiệp - Công Ty Cổ Phần | EdTech Pro</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldBrand: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 900: '#064e3b' },
+                        indigoBrand: { 50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Quicksand', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 45px -15px rgba(15, 23, 42, 0.07), 0 8px 20px -10px rgba(16, 185, 129, 0.06)',
+                        'glow-emerald': '0 12px 30px -8px rgba(16, 185, 129, 0.35)',
+                        'glow-indigo': '0 12px 30px -8px rgba(79, 70, 229, 0.35)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* ==========================================================
+           PREMIUM DESIGN SYSTEM, PAGE TRANSITIONS & MICRO-ANIMATIONS
+           ========================================================== */
+        :root {
+            --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Subtle Architectural Background Grid */
+        .bg-grid-pattern {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+        }
+        .dark .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+        }
+
+        /* Tab & Page Transition Animations */
+        .tab-content, .admin-subtab {
+            display: none;
+            opacity: 0;
+        }
+        .tab-content.active, .admin-subtab.active {
+            display: block;
+            opacity: 1;
+            animation: pageReveal 0.45s var(--ease-spring) forwards;
+        }
+
+        @keyframes pageReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(14px) scale(0.992);
+                filter: blur(2px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* Staggered Section Reveal */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(16px);
+            animation: staggerSlideUp 0.55s var(--ease-spring) forwards;
+        }
+        .stagger-item:nth-child(1) { animation-delay: 0.04s; }
+        .stagger-item:nth-child(2) { animation-delay: 0.09s; }
+        .stagger-item:nth-child(3) { animation-delay: 0.14s; }
+        .stagger-item:nth-child(4) { animation-delay: 0.19s; }
+        .stagger-item:nth-child(5) { animation-delay: 0.24s; }
+
+        @keyframes staggerSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating & Ambient Keyframe Animations for SVGs */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes floatDelayed {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(2deg); }
+        }
+        @keyframes pulseRing {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.06); opacity: 0.35; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+        @keyframes dashFlow {
+            to { stroke-dashoffset: -24; }
+        }
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .animate-float-slow { animation: floatSlow 5s ease-in-out infinite; }
+        .animate-float-delayed { animation: floatDelayed 6s ease-in-out 1.5s infinite; }
+        .animate-pulse-ring { animation: pulseRing 4s ease-in-out infinite; }
+        .animate-dash-flow { animation: dashFlow 1.5s linear infinite; }
+
+        /* Interactive Card & Button Micro-Interactions */
+        .interactive-card {
+            transition: transform 0.32s var(--ease-spring), box-shadow 0.32s var(--ease-spring), border-color 0.25s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 40px -14px rgba(15, 23, 42, 0.1), 0 8px 20px -8px rgba(16, 185, 129, 0.1);
+        }
+        .dark .interactive-card:hover {
+            box-shadow: 0 22px 40px -14px rgba(0, 0, 0, 0.5), 0 8px 20px -8px rgba(16, 185, 129, 0.15);
+        }
+
+        .btn-micro {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s var(--ease-spring), box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        .btn-micro:active {
+            transform: scale(0.97);
+        }
+
+        /* 3D Flip Card for Term Explorer */
+        .perspective-1000 { perspective: 1000px; }
+        .flip-card-inner {
+            transition: transform 0.6s var(--ease-spring);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300 bg-grid-pattern selection:bg-emerald-500 selection:text-white">
+
+    <!-- AMBIENT BACKGROUND GLOW ORBS -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-28 -left-28 w-96 h-96 bg-emerald-400/10 dark:bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 -right-28 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-28 left-1/3 w-80 h-80 bg-teal-400/10 dark:bg-teal-500/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- THÔNG BÁO TOAST -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2.5 pointer-events-none"></div>
+
+    <!-- CUSTOM DIALOG MODAL (Thay thế alert/confirm/prompt an toàn) -->
+    <div id="custom-dialog-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white dark:bg-slate-900 p-6 sm:p-7 rounded-3xl shadow-2xl w-full max-w-md border border-slate-200 dark:border-slate-800 space-y-4 transform transition-all">
+            <div class="flex items-center gap-3.5">
+                <div id="custom-dialog-icon" class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h4 id="custom-dialog-title" class="font-heading text-lg font-extrabold text-slate-800 dark:text-white">Xác nhận thao tác</h4>
+                    <p id="custom-dialog-message" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed"></p>
+                </div>
+            </div>
+            <div id="custom-dialog-inputs" class="hidden space-y-3 pt-1"></div>
+            <div class="flex justify-end gap-2.5 pt-2">
+                <button id="custom-dialog-cancel" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-heading font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    Hủy bỏ
+                </button>
+                <button id="custom-dialog-confirm" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-indigo-600 text-white text-xs font-heading font-bold shadow-md hover:opacity-95 transition">
+                    Đồng ý
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER CHÍNH -->
+    <header class="bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-slate-800/80 px-4 lg:px-8 py-3.5 sticky top-0 z-30 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-3.5">
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileSidebar()" aria-label="Menu" class="lg:hidden p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition btn-micro">
+                <i class="fa-solid fa-bars-staggered text-lg"></i>
+            </button>
+            <div onclick="switchTab('home')" class="flex items-center gap-3.5 cursor-pointer group">
+                <div class="relative">
+                    <div id="brand-logo-box" class="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-500 to-indigo-600 text-white flex items-center justify-center font-heading font-extrabold text-xl shadow-lg shadow-emerald-500/25 group-hover:scale-105 transition-transform">
+                        CP
+                    </div>
+                    <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-400 border-2 border-white dark:border-slate-900 rounded-full"></span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 id="brand-site-title" class="font-heading font-extrabold text-lg lg:text-xl tracking-tight text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Kiến Thức Doanh Nghiệp</h1>
+                        <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-heading font-extrabold bg-emerald-100 dark:bg-emerald-950/90 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800">GDKT & PL 10</span>
+                    </div>
+                    <p id="brand-site-subtitle" class="text-xs text-slate-500 dark:text-slate-400 font-medium">Môn Giáo dục Kinh tế và Pháp luật 10</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Hiển thị tên học sinh đang làm bài -->
+            <div id="user-info-badge" class="hidden text-xs bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 px-3.5 py-2 rounded-xl font-semibold flex items-center gap-2 shadow-sm">
+                <i class="fa-solid fa-user-graduate text-emerald-500"></i>
+                <span id="display-student-name"></span>
+            </div>
+
+            <!-- Nút Sao Lưu Nhanh (Backup Snapshot) -->
+            <button onclick="exportBackupSnapshotJSON()" class="hidden md:flex items-center gap-1.5 px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 text-xs font-heading font-bold transition btn-micro" title="Tải bản sao lưu dữ liệu an toàn (.json)">
+                <i class="fa-solid fa-cloud-arrow-down text-emerald-500"></i>
+                <span>Backup</span>
+            </button>
+
+            <!-- Nút chuyển Dark / Light Mode -->
+            <button onclick="toggleTheme()" class="p-2.5 w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-emerald-500 transition flex items-center justify-center btn-micro" title="Đổi giao diện Sáng/Tối">
+                <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+            </button>
+
+            <!-- Nút Quản trị Admin -->
+            <button id="btn-admin-header" onclick="handleAdminTrigger()" class="px-4 py-2.5 bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-700 hover:to-indigo-700 text-white rounded-xl text-xs sm:text-sm font-heading font-bold transition shadow-md shadow-indigo-500/20 flex items-center gap-2 btn-micro">
+                <i class="fa-solid fa-user-shield"></i>
+                <span id="admin-btn-label">Quản Trị Admin</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- KHUNG BỐ CỤC CHÍNH -->
+    <div class="flex flex-1 relative z-10">
+
+        <!-- BACKDROP CHO MOBILE SIDEBAR -->
+        <div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-950/50 backdrop-blur-xs z-20 hidden lg:hidden transition-opacity"></div>
+
+        <!-- SIDEBAR ĐIỀU HƯỚNG HỌC TẬP -->
+        <aside id="main-sidebar" class="fixed lg:sticky lg:top-[69px] lg:h-[calc(100vh-69px)] inset-y-0 left-0 z-20 w-72 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-r border-slate-200/80 dark:border-slate-800/80 p-5 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out overflow-y-auto shrink-0">
+            <div class="space-y-6">
+                <div>
+                    <div class="flex items-center justify-between px-3 mb-3">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Danh mục chuyên môn</span>
+                        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">6 Học phần</span>
+                    </div>
+                    <ul class="space-y-1.5">
+                        <li>
+                            <button onclick="switchTab('home')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl font-heading font-bold text-sm transition bg-emerald-600 text-white shadow-md shadow-emerald-600/20 btn-micro" data-target="home">
+                                <span class="flex items-center gap-3.5"><i class="fa-solid fa-house w-5 text-center"></i> Trang chủ</span>
+                                <i class="fa-solid fa-chevron-right text-[10px] opacity-75"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="switchTab('knowledge')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl font-heading font-bold text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80 btn-micro" data-target="knowledge">
+                                <span class="flex items-center gap-3.5"><i class="fa-solid fa-book-open w-5 text-center text-emerald-500"></i> Kiến thức</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400">5 mục</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="switchTab('casestudy')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl font-heading font-bold text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80 btn-micro" data-target="casestudy">
+                                <span class="flex items-center gap-3.5"><i class="fa-solid fa-building w-5 text-center text-indigo-500"></i> Ví dụ thực tế</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">IPO</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="switchTab('video')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl font-heading font-bold text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80 btn-micro" data-target="video">
+                                <span class="flex items-center gap-3.5"><i class="fa-solid fa-video w-5 text-center text-sky-500"></i> Video</span>
+                                <i class="fa-solid fa-play text-[10px] text-sky-500"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="switchTab('game')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl font-heading font-bold text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80 btn-micro" data-target="game">
+                                <span class="flex items-center gap-3.5"><i class="fa-solid fa-gamepad w-5 text-center text-purple-500"></i> Trò chơi</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-400">3D Card</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="switchTab('practice')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl font-heading font-bold text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80 btn-micro" data-target="practice">
+                                <span class="flex items-center gap-3.5"><i class="fa-solid fa-file-lines w-5 text-center text-amber-500"></i> Luyện tập & Xếp hạng</span>
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            </button>
+                        </li>
+                        <!-- Tab Quản trị chỉ hiện khi Admin đã đăng nhập -->
+                        <li id="sidebar-admin-item" class="hidden pt-3 mt-3 border-t border-slate-200 dark:border-slate-800">
+                            <button onclick="switchTab('admin-cms')" class="nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-xl font-heading font-bold text-sm transition text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 btn-micro" data-target="admin-cms">
+                                <i class="fa-solid fa-sliders w-5 text-center"></i> Hệ Thống Quản Trị CMS
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sơ đồ tóm tắt nhanh trên Sidebar -->
+                <div class="p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-800 space-y-2.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-heading font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Từ khóa cốt lõi</span>
+                        <i class="fa-solid fa-sparkles text-amber-400 text-xs"></i>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span onclick="switchTab('knowledge')" class="cursor-pointer text-[11px] font-medium px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 transition">Tối thiểu 3 cổ đông</span>
+                        <span onclick="switchTab('knowledge')" class="cursor-pointer text-[11px] font-medium px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 transition">Vốn điều lệ</span>
+                        <span onclick="switchTab('knowledge')" class="cursor-pointer text-[11px] font-medium px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 transition">Cổ phần</span>
+                        <span onclick="switchTab('knowledge')" class="cursor-pointer text-[11px] font-medium px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 transition">ĐHĐCĐ</span>
+                        <span onclick="switchTab('knowledge')" class="cursor-pointer text-[11px] font-medium px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-emerald-400 transition">Tư cách pháp nhân</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trạng thái bảo toàn dữ liệu & Backup -->
+            <div class="mt-6 p-4 rounded-2xl bg-gradient-to-br from-emerald-50 via-teal-50/60 to-indigo-50 dark:from-slate-800 dark:to-slate-800/70 border border-emerald-200/70 dark:border-slate-700 space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        </span>
+                        <p class="font-heading font-bold text-xs text-slate-800 dark:text-slate-200">Bảo Toàn Dữ Liệu Gốc 100%</p>
+                    </div>
+                    <i class="fa-solid fa-shield-halved text-emerald-600 dark:text-emerald-400 text-xs"></i>
+                </div>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">Chương trình Giáo dục Kinh tế & Pháp luật 10 được sao lưu tự động.</p>
+                <div class="pt-1 flex items-center gap-2">
+                    <button onclick="exportBackupSnapshotJSON()" class="w-full py-1.5 px-2.5 rounded-xl bg-white/90 dark:bg-slate-900/90 hover:bg-white text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-slate-700 text-[11px] font-heading font-bold transition flex items-center justify-center gap-1.5 shadow-2xs">
+                        <i class="fa-solid fa-download"></i> Sao Lưu Dự Phòng
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- VÙNG NỘI DUNG CHÍNH -->
+        <main class="flex-1 p-4 sm:p-7 lg:p-10 overflow-y-auto max-w-7xl mx-auto w-full">
+
+            <!-- ==========================================
+                 1. TRANG CHỦ (DASHBOARD, HERO SVG & SƠ ĐỒ TRỰC QUAN)
+                 ========================================== -->
+            <div id="home" class="tab-content active space-y-8">
+                <!-- Hero Banner Nâng Cấp Với Đồ Họa Vector SVG Đa Lớp -->
+                <div class="relative bg-gradient-to-br from-emerald-600 via-teal-600 to-indigo-800 rounded-3xl p-7 sm:p-10 lg:p-12 text-white shadow-2xl overflow-hidden flex flex-col lg:flex-row justify-between items-center gap-8 border border-white/15">
+                    <!-- Decorative Background SVG Mesh -->
+                    <svg class="absolute inset-0 w-full h-full opacity-15 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="none">
+                        <defs>
+                            <pattern id="heroGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.75"/>
+                            </pattern>
+                        </defs>
+                        <rect width="800" height="400" fill="url(#heroGrid)"/>
+                        <path d="M0 320 Q 220 200 420 270 T 800 140" fill="none" stroke="white" stroke-width="2" stroke-dasharray="6 6" class="animate-dash-flow"/>
+                    </svg>
+
+                    <div class="z-10 max-w-2xl space-y-5">
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <span id="hero-badge-display" class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 border border-white/25 shadow-sm">
+                                <i class="fa-solid fa-star text-yellow-300"></i> Chương trình chuẩn Bộ GD&ĐT
+                            </span>
+                            <span class="bg-emerald-950/40 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-200 border border-emerald-400/30 inline-flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-check text-emerald-300"></i> Chủ đề: Mô hình Doanh nghiệp
+                            </span>
+                        </div>
+
+                        <h2 id="hero-title-display" class="font-heading text-3xl sm:text-5xl lg:text-[52px] font-extrabold tracking-tight leading-none drop-shadow-sm">
+                            CÔNG TY CỔ PHẦN
+                        </h2>
+
+                        <p id="hero-slogan-display" class="text-base sm:text-lg text-emerald-50/95 leading-relaxed font-medium max-w-xl">
+                            Một mô hình doanh nghiệp hiện đại, huy động vốn linh hoạt, phát triển bền vững
+                        </p>
+
+                        <!-- Quick Feature Pills -->
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="text-xs bg-white/10 backdrop-blur-xs px-3 py-1.5 rounded-xl border border-white/15 flex items-center gap-1.5">
+                                <i class="fa-solid fa-users text-amber-300"></i> ≥ 3 Cổ đông, không giới hạn tối đa
+                            </span>
+                            <span class="text-xs bg-white/10 backdrop-blur-xs px-3 py-1.5 rounded-xl border border-white/15 flex items-center gap-1.5">
+                                <i class="fa-solid fa-chart-line text-emerald-300"></i> Phát hành cổ phiếu & chứng khoán
+                            </span>
+                            <span class="text-xs bg-white/10 backdrop-blur-xs px-3 py-1.5 rounded-xl border border-white/15 flex items-center gap-1.5">
+                                <i class="fa-solid fa-shield-halved text-sky-300"></i> Trách nhiệm hữu hạn theo vốn góp
+                            </span>
+                        </div>
+
+                        <div class="pt-3 flex flex-wrap gap-3.5">
+                            <button onclick="switchTab('knowledge')" class="px-7 py-3.5 bg-white text-emerald-800 font-heading font-extrabold rounded-2xl shadow-xl hover:bg-emerald-50 transition flex items-center gap-2.5 text-sm btn-micro">
+                                <span>Khám Phá Kiến Thức</span>
+                                <i class="fa-solid fa-arrow-right text-emerald-600"></i>
+                            </button>
+                            <button onclick="switchTab('practice')" class="px-6 py-3.5 bg-indigo-950/45 hover:bg-indigo-950/65 backdrop-blur-md text-white border border-white/30 font-heading font-bold rounded-2xl transition flex items-center gap-2.5 text-sm btn-micro">
+                                <i class="fa-solid fa-trophy text-yellow-300"></i>
+                                <span>Làm Bài & Xếp Hạng</span>
+                            </button>
+                            <button onclick="switchTab('casestudy')" class="px-5 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 font-heading font-bold rounded-2xl transition flex items-center gap-2 text-sm btn-micro">
+                                <i class="fa-solid fa-building-circle-check text-emerald-200"></i>
+                                <span>Ví Dụ Thực Tế</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bespoke Isometric Corporate & Stock Market SVG Illustration -->
+                    <div class="z-10 relative w-full max-w-xs sm:max-w-sm shrink-0">
+                        <div class="bg-white/10 backdrop-blur-xl p-5 sm:p-6 rounded-3xl border border-white/25 shadow-2xl relative">
+                            <!-- Floating Badge Top Left -->
+                            <div class="absolute -top-3 -left-3 bg-white text-slate-900 px-3.5 py-2 rounded-2xl shadow-xl border border-emerald-100 flex items-center gap-2 animate-float-slow">
+                                <div class="w-7 h-7 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs font-bold">
+                                    <i class="fa-solid fa-arrow-trend-up"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 font-bold uppercase leading-none">Cổ Phần Hóa</p>
+                                    <p class="text-xs font-heading font-extrabold text-emerald-600">+Vốn Điều Lệ</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge Bottom Right -->
+                            <div class="absolute -bottom-3 -right-3 bg-slate-900/95 text-white px-3.5 py-2 rounded-2xl shadow-xl border border-indigo-400/30 flex items-center gap-2 animate-float-delayed">
+                                <div class="w-7 h-7 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-xs font-bold">
+                                    <i class="fa-solid fa-coins"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-300 font-semibold leading-none">Cổ Đông Sở Hữu</p>
+                                    <p class="text-xs font-heading font-extrabold text-amber-300">Cổ Phiếu & Cổ Tức</p>
+                                </div>
+                            </div>
+
+                            <!-- Custom Vector Illustration: Joint Stock Corporate Ecosystem -->
+                            <svg class="w-full h-52 sm:h-56 mx-auto" viewBox="0 0 360 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Glowing Backdrop Circle -->
+                                <circle cx="180" cy="120" r="88" fill="url(#heroOrbGrad)" class="animate-pulse-ring"/>
+                                
+                                <!-- Stock Market Growth Chart Card -->
+                                <rect x="26" y="34" width="125" height="78" rx="14" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                                <path d="M42 88 L68 70 L92 78 L118 50 L135 56" stroke="#6EE7B7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="118" cy="50" r="4.5" fill="#FDE047"/>
+                                <rect x="42" y="46" width="44" height="6" rx="3" fill="rgba(255,255,255,0.6)"/>
+                                <rect x="42" y="96" width="22" height="5" rx="2.5" fill="rgba(255,255,255,0.35)"/>
+                                <rect x="70" y="96" width="28" height="5" rx="2.5" fill="rgba(255,255,255,0.35)"/>
+
+                                <!-- Central Corporate Tower (Trụ sở Công ty Cổ phần) -->
+                                <g class="animate-float-slow">
+                                    <!-- Building Shadow Base -->
+                                    <ellipse cx="185" cy="204" rx="68" ry="12" fill="rgba(15, 23, 42, 0.35)"/>
+                                    <!-- Left Wing -->
+                                    <rect x="122" y="106" width="38" height="92" rx="6" fill="#A7F3D0" stroke="#ffffff" stroke-width="1.5"/>
+                                    <!-- Right Wing -->
+                                    <rect x="206" y="116" width="38" height="82" rx="6" fill="#C7D2FE" stroke="#ffffff" stroke-width="1.5"/>
+                                    <!-- Main Center Tower -->
+                                    <rect x="150" y="64" width="66" height="134" rx="8" fill="#ffffff"/>
+                                    <!-- Tower Top Crown -->
+                                    <path d="M162 64 L183 42 L204 64 Z" fill="#FDE047" stroke="#ffffff" stroke-width="1.5"/>
+                                    <!-- Windows Grid on Main Tower -->
+                                    <rect x="161" y="78" width="18" height="12" rx="3" fill="#059669"/>
+                                    <rect x="186" y="78" width="18" height="12" rx="3" fill="#059669"/>
+                                    <rect x="161" y="98" width="18" height="12" rx="3" fill="#10B981"/>
+                                    <rect x="186" y="98" width="18" height="12" rx="3" fill="#10B981"/>
+                                    <rect x="161" y="118" width="18" height="12" rx="3" fill="#4F46E5"/>
+                                    <rect x="186" y="118" width="18" height="12" rx="3" fill="#4F46E5"/>
+                                    <rect x="161" y="138" width="18" height="12" rx="3" fill="#6366F1"/>
+                                    <rect x="186" y="138" width="18" height="12" rx="3" fill="#6366F1"/>
+                                    <!-- Entrance -->
+                                    <rect x="171" y="166" width="24" height="32" rx="4" fill="#0F172A"/>
+                                </g>
+
+                                <!-- Shareholder Nodes (3+ Cổ Đông Kết Nối) -->
+                                <g>
+                                    <line x1="244" y1="84" x2="286" y2="62" stroke="#A7F3D0" stroke-width="2" stroke-dasharray="4 4"/>
+                                    <line x1="244" y1="135" x2="298" y2="128" stroke="#FDE047" stroke-width="2" stroke-dasharray="4 4"/>
+                                    <circle cx="298" cy="56" r="18" fill="#10B981" stroke="#ffffff" stroke-width="2"/>
+                                    <circle cx="298" cy="51" r="5" fill="#ffffff"/>
+                                    <path d="M288 65 C288 59 308 59 308 65" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+
+                                    <circle cx="312" cy="126" r="16" fill="#6366F1" stroke="#ffffff" stroke-width="2"/>
+                                    <circle cx="312" cy="121" r="4.5" fill="#ffffff"/>
+                                    <path d="M303 134 C303 129 321 129 321 134" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+
+                                    <circle cx="72" cy="154" r="17" fill="#F59E0B" stroke="#ffffff" stroke-width="2"/>
+                                    <text x="72" y="159" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="bold">₫</text>
+                                </g>
+
+                                <defs>
+                                    <radialGradient id="heroOrbGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(180 120) rotate(90) scale(95)">
+                                        <stop stop-color="#34D399" stop-opacity="0.55"/>
+                                        <stop offset="1" stop-color="#6366F1" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+                            </svg>
+
+                            <div class="text-center pt-2 border-t border-white/15">
+                                <p class="font-heading font-extrabold text-sm tracking-wide text-white">Mô Hình Doanh Nghiệp Hiện Đại</p>
+                                <p class="text-[11px] text-emerald-100 mt-0.5">Tư cách pháp nhân • Tự do chuyển nhượng cổ phần</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+                </div>
+
+                <!-- Thống kê nhanh (Nâng cấp với thanh tiến độ trực quan) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div onclick="switchTab('knowledge')" class="interactive-card cursor-pointer bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between gap-3">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl shrink-0 shadow-inner">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                            <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 px-2.5 py-1 rounded-full">Trọng tâm</span>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Chuyên mục kiến thức</p>
+                            <p id="stat-lessons-count" class="font-heading text-2xl font-extrabold text-slate-800 dark:text-white mt-0.5">5 phần</p>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-emerald-500 h-full w-full rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <div onclick="switchTab('practice')" class="interactive-card cursor-pointer bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between gap-3">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl shrink-0 shadow-inner">
+                                <i class="fa-solid fa-circle-question"></i>
+                            </div>
+                            <span class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-2.5 py-1 rounded-full">Có giải thích</span>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Câu hỏi trắc nghiệm</p>
+                            <p id="stat-questions-count" class="font-heading text-2xl font-extrabold text-slate-800 dark:text-white mt-0.5">4 câu</p>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-indigo-500 h-full w-4/5 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <div onclick="switchTab('practice')" class="interactive-card cursor-pointer bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between gap-3">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl shrink-0 shadow-inner">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <span class="text-[11px] font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/80 px-2.5 py-1 rounded-full">Trực tuyến</span>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Lượt học sinh làm bài</p>
+                            <p id="stat-attempts-count" class="font-heading text-2xl font-extrabold text-slate-800 dark:text-white mt-0.5">3 lượt</p>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-amber-500 h-full w-3/4 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-card bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between gap-3">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl shrink-0 shadow-inner">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 px-2.5 py-1 rounded-full">Đã kiểm duyệt</span>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Trạng thái dữ liệu</p>
+                            <p class="font-heading text-lg font-extrabold text-emerald-600 dark:text-emerald-400 mt-0.5">Chuẩn SGK 100%</p>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-emerald-500 to-indigo-500 h-full w-full rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 Thẻ Điều Hướng Nhanh (Giữ nguyên cấu trúc 5 mục + Minh họa SVG trực quan) -->
+                <div class="space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <h3 class="font-heading text-xl sm:text-2xl font-extrabold text-slate-800 dark:text-white">Khám phá nội dung bài học</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Chọn từng chuyên đề để xem hệ thống lý thuyết và sơ đồ hóa trực quan</p>
+                        </div>
+                        <button onclick="switchTab('knowledge')" class="text-xs font-heading font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1.5">
+                            Xem toàn bộ 5 phần <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                        <!-- Card 01 -->
+                        <div onclick="switchTab('knowledge')" class="stagger-item interactive-card bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400 cursor-pointer flex flex-col justify-between group relative overflow-hidden">
+                            <span class="absolute top-3 right-3 text-[11px] font-heading font-extrabold text-emerald-600/40 dark:text-emerald-400/30">01</span>
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-3.5 group-hover:scale-110 transition-transform shadow-xs">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                </div>
+                                <h4 class="font-heading font-bold text-slate-800 dark:text-white mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Khái niệm, đặc điểm</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Định nghĩa & các thuộc tính pháp lý</p>
+                            </div>
+                            <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-emerald-600 dark:text-emerald-400">
+                                <span class="text-[11px] font-bold">Tìm hiểu ngay</span>
+                                <i class="fa-solid fa-arrow-right bg-emerald-50 dark:bg-emerald-950 p-2 rounded-full text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card 02 -->
+                        <div onclick="switchTab('knowledge')" class="stagger-item interactive-card bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 cursor-pointer flex flex-col justify-between group relative overflow-hidden">
+                            <span class="absolute top-3 right-3 text-[11px] font-heading font-extrabold text-amber-600/40 dark:text-amber-400/30">02</span>
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-3.5 group-hover:scale-110 transition-transform shadow-xs">
+                                    <i class="fa-solid fa-coins"></i>
+                                </div>
+                                <h4 class="font-heading font-bold text-slate-800 dark:text-white mb-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Vốn điều lệ</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Phân chia phần vốn góp</p>
+                            </div>
+                            <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-amber-600 dark:text-amber-400">
+                                <span class="text-[11px] font-bold">Tìm hiểu ngay</span>
+                                <i class="fa-solid fa-arrow-right bg-amber-50 dark:bg-amber-950 p-2 rounded-full text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card 03 -->
+                        <div onclick="switchTab('knowledge')" class="stagger-item interactive-card bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 hover:border-sky-400 cursor-pointer flex flex-col justify-between group relative overflow-hidden">
+                            <span class="absolute top-3 right-3 text-[11px] font-heading font-extrabold text-sky-600/40 dark:text-sky-400/30">03</span>
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl mb-3.5 group-hover:scale-110 transition-transform shadow-xs">
+                                    <i class="fa-solid fa-certificate"></i>
+                                </div>
+                                <h4 class="font-heading font-bold text-slate-800 dark:text-white mb-1 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Cổ phần, cổ phiếu, cổ đông</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Quyền sở hữu của cổ đông</p>
+                            </div>
+                            <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-sky-600 dark:text-sky-400">
+                                <span class="text-[11px] font-bold">Tìm hiểu ngay</span>
+                                <i class="fa-solid fa-arrow-right bg-sky-50 dark:bg-sky-950 p-2 rounded-full text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card 04 -->
+                        <div onclick="switchTab('knowledge')" class="stagger-item interactive-card bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 hover:border-indigo-400 cursor-pointer flex flex-col justify-between group relative overflow-hidden">
+                            <span class="absolute top-3 right-3 text-[11px] font-heading font-extrabold text-indigo-600/40 dark:text-indigo-400/30">04</span>
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl mb-3.5 group-hover:scale-110 transition-transform shadow-xs">
+                                    <i class="fa-solid fa-sitemap"></i>
+                                </div>
+                                <h4 class="font-heading font-bold text-slate-800 dark:text-white mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Cơ cấu tổ chức</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">ĐHĐCĐ, HĐQT, Giám đốc</p>
+                            </div>
+                            <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-indigo-600 dark:text-indigo-400">
+                                <span class="text-[11px] font-bold">Tìm hiểu ngay</span>
+                                <i class="fa-solid fa-arrow-right bg-indigo-50 dark:bg-indigo-950 p-2 rounded-full text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card 05 -->
+                        <div onclick="switchTab('knowledge')" class="stagger-item interactive-card bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 hover:border-rose-400 cursor-pointer flex flex-col justify-between group relative overflow-hidden">
+                            <span class="absolute top-3 right-3 text-[11px] font-heading font-extrabold text-rose-600/40 dark:text-rose-400/30">05</span>
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl mb-3.5 group-hover:scale-110 transition-transform shadow-xs">
+                                    <i class="fa-solid fa-scale-balanced"></i>
+                                </div>
+                                <h4 class="font-heading font-bold text-slate-800 dark:text-white mb-1 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">Trách nhiệm và quyền hạn</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Trách nhiệm tài sản cổ đông</p>
+                            </div>
+                            <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-rose-600 dark:text-rose-400">
+                                <span class="text-[11px] font-bold">Tìm hiểu ngay</span>
+                                <i class="fa-solid fa-arrow-right bg-rose-50 dark:bg-rose-950 p-2 rounded-full text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SƠ ĐỒ TRỰC QUAN HÓA DÒNG CHẢY VỐN & QUẢN TRỊ CÔNG TY CỔ PHẦN (INFOGRAPHIC) -->
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200/80 dark:border-slate-800 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-indigo-600 text-white flex items-center justify-center shadow-sm">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading text-lg sm:text-xl font-extrabold text-slate-800 dark:text-white">Sơ Đồ Trực Quan Hóa Cơ Chế Công Ty Cổ Phần</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Minh họa mối quan hệ giữa Vốn điều lệ, Cổ phần, Cổ phiếu và Cổ đông</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                            Infographic Tương Tác
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+                        <!-- Step 1 -->
+                        <div onclick="switchTab('knowledge')" class="cursor-pointer group p-5 rounded-2xl bg-gradient-to-b from-emerald-50/70 to-white dark:from-emerald-950/30 dark:to-slate-900 border border-emerald-200/70 dark:border-emerald-900/60 hover:border-emerald-500 transition flex flex-col items-center text-center">
+                            <svg class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform" viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="40" r="34" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                                <path d="M40 16 V40 L58 52" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="40" cy="40" r="5" fill="#047857"/>
+                            </svg>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Bước 01</span>
+                            <h4 class="font-heading font-extrabold text-sm text-slate-800 dark:text-white mt-0.5">Vốn Điều Lệ</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Tổng số vốn do các cổ đông đóng góp và được chia thành nhiều phần bằng nhau.</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div onclick="switchTab('knowledge')" class="cursor-pointer group p-5 rounded-2xl bg-gradient-to-b from-amber-50/70 to-white dark:from-amber-950/30 dark:to-slate-900 border border-amber-200/70 dark:border-amber-900/60 hover:border-amber-500 transition flex flex-col items-center text-center">
+                            <svg class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform" viewBox="0 0 80 80" fill="none">
+                                <rect x="14" y="20" width="52" height="40" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                                <line x1="31" y1="20" x2="31" y2="60" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3 3"/>
+                                <line x1="49" y1="20" x2="49" y2="60" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3 3"/>
+                                <circle cx="40" cy="40" r="7" fill="#D97706"/>
+                            </svg>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Bước 02</span>
+                            <h4 class="font-heading font-extrabold text-sm text-slate-800 dark:text-white mt-0.5">Cổ Phần & Cổ Phiếu</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Mỗi phần bằng nhau gọi là cổ phần. Phát hành cổ phiếu/chứng khoán để huy động vốn.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div onclick="switchTab('knowledge')" class="cursor-pointer group p-5 rounded-2xl bg-gradient-to-b from-sky-50/70 to-white dark:from-sky-950/30 dark:to-slate-900 border border-sky-200/70 dark:border-sky-900/60 hover:border-sky-500 transition flex flex-col items-center text-center">
+                            <svg class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform" viewBox="0 0 80 80" fill="none">
+                                <circle cx="26" cy="34" r="10" fill="#BAE6FD" stroke="#0284C7" stroke-width="2"/>
+                                <circle cx="54" cy="34" r="10" fill="#BAE6FD" stroke="#0284C7" stroke-width="2"/>
+                                <circle cx="40" cy="28" r="12" fill="#38BDF8" stroke="#0369A1" stroke-width="2"/>
+                                <path d="M22 58 C22 47 58 47 58 58" fill="#0284C7"/>
+                            </svg>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">Bước 03</span>
+                            <h4 class="font-heading font-extrabold text-sm text-slate-800 dark:text-white mt-0.5">Cổ Đông (≥ 3 người)</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Cá nhân hoặc tổ chức sở hữu cổ phần; tự do chuyển nhượng và bầu Hội đồng quản trị.</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div onclick="switchTab('knowledge')" class="cursor-pointer group p-5 rounded-2xl bg-gradient-to-b from-indigo-50/70 to-white dark:from-indigo-950/30 dark:to-slate-900 border border-indigo-200/70 dark:border-indigo-900/60 hover:border-indigo-500 transition flex flex-col items-center text-center">
+                            <svg class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform" viewBox="0 0 80 80" fill="none">
+                                <path d="M40 14 L64 24 V42 C64 56 40 66 40 66 C40 66 16 56 16 42 V24 L40 14 Z" fill="#E0E7FF" stroke="#4F46E5" stroke-width="2"/>
+                                <path d="M31 40 L37 46 L50 33" stroke="#4338CA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Bước 04</span>
+                            <h4 class="font-heading font-extrabold text-sm text-slate-800 dark:text-white mt-0.5">Trách Nhiệm Hữu Hạn</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Chỉ chịu trách nhiệm về nợ và nghĩa vụ tài sản trong phạm vi số vốn đã góp.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 2. KIẾN THỨC TRỌNG TÂM (GIỮ NGUYÊN 100% NỘI DUNG GỐC + ĐỒ HỌA SVG MINH HỌA)
+                 ========================================== -->
+            <div id="knowledge" class="tab-content space-y-6">
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
+                    <div class="flex flex-wrap justify-between items-center gap-4 mb-6 pb-5 border-b border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-xl shadow-md shadow-emerald-500/20">
+                                <i class="fa-solid fa-book-bookmark"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-heading text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">
+                                    Hệ Thống Kiến Thức Trọng Tâm
+                                </h2>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Nội dung chuẩn Sách giáo khoa Giáo dục Kinh tế và Pháp luật 10 • Tích hợp sơ đồ minh họa trực quan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="switchTab('practice')" class="text-xs bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-3.5 py-2 rounded-xl font-heading font-bold hover:bg-emerald-100 transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-pen-clip"></i> Luyện tập ngay
+                            </button>
+                            <button onclick="OnlyAdminOpenCMS('cms-lessons')" class="admin-only-btn hidden text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl font-bold transition flex items-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-pen-to-square"></i> Quản lý bài học trong CMS
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="knowledge-sections-container" class="space-y-6">
+                        <!-- Render từ appState.published.knowledge kèm đồ họa SVG minh họa -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 3. VÍ DỤ THỰC TẾ (GIỮ NGUYÊN 100% NỘI DUNG GỐC + SƠ ĐỒ DÒNG VỐN IPO)
+                 ========================================== -->
+            <div id="casestudy" class="tab-content space-y-6">
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
+                    <div class="flex flex-wrap justify-between items-center gap-4 mb-6 pb-5 border-b border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-emerald-600 text-white flex items-center justify-center text-xl shadow-md">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-heading text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">
+                                    Tình huống thực tế minh họa
+                                </h2>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Phân tích cách thức vận hành vốn, phát hành cổ phiếu và chia cổ tức trong thực tiễn</p>
+                            </div>
+                        </div>
+                        <button onclick="OnlyAdminOpenCMS('cms-casestudy')" class="admin-only-btn hidden text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl font-bold transition flex items-center gap-2">
+                            <i class="fa-solid fa-pen"></i> Chỉnh sửa Ví dụ
+                        </button>
+                    </div>
+                    <div id="casestudy-container">
+                        <!-- Render từ appState.published.caseStudy -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 4. VIDEO (GIỮ NGUYÊN TRẠNG THÁI GỐC + HỖ TRỢ ADMIN CẬP NHẬT + THẺ TÓM TẮT TRỰC QUAN)
+                 ========================================== -->
+            <div id="video" class="tab-content space-y-6">
+                <div id="video-container" class="bg-white dark:bg-slate-900 p-8 sm:p-12 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 text-center">
+                    <!-- Render từ appState.published.video -->
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 5. TRÒ CHƠI (GIỮ NGUYÊN TRẠNG THÁI GỐC + BỘ THẺ TƯƠNG TÁC 3D)
+                 ========================================== -->
+            <div id="game" class="tab-content space-y-6">
+                <div id="game-container" class="bg-white dark:bg-slate-900 p-8 sm:p-12 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 text-center">
+                    <!-- Render từ appState.published.game -->
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 6. LUYỆN TẬP & XẾP HẠNG (CÓ ĐẾM THỜI GIAN LÀM BÀI)
+                 ========================================== -->
+            <div id="practice" class="tab-content space-y-6">
+                <!-- Bước 1: Điền thông tin học sinh -->
+                <div id="student-form-card" class="bg-white dark:bg-slate-900 p-8 sm:p-10 rounded-3xl shadow-premium border border-slate-200 dark:border-slate-800 max-w-xl mx-auto relative overflow-hidden">
+                    <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600"></div>
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-emerald-100 to-indigo-100 dark:from-emerald-950 dark:to-indigo-950 text-emerald-600 dark:text-emerald-400 rounded-3xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
+                            <i class="fa-solid fa-user-pen"></i>
+                        </div>
+                        <span class="text-[11px] font-heading font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">Kiểm tra đánh giá năng lực</span>
+                        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-white mt-2">Thông Tin Học Sinh</h2>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Vui lòng điền đầy đủ thông tin trước khi bắt đầu làm bài trắc nghiệm.</p>
+                    </div>
+
+                    <form onsubmit="startQuiz(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Họ và tên học sinh:</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-user-graduate absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                <input type="text" id="input-name" required placeholder="Ví dụ: Nguyễn Văn A" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Lớp:</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-school absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                                <input type="text" id="input-class" required placeholder="Ví dụ: 10A1" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm transition">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-700 hover:to-indigo-700 text-white font-heading font-extrabold rounded-xl transition shadow-lg shadow-emerald-600/25 btn-micro flex items-center justify-center gap-2">
+                            <span>Vào Làm Bài Trắc Nghiệm</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Bước 2: Làm bài trắc nghiệm + Đồng hồ theo dõi thời gian -->
+                <div id="quiz-taking-card" class="hidden bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 max-w-3xl mx-auto space-y-6">
+                    <div class="flex flex-wrap justify-between items-center gap-4 border-b border-slate-100 dark:border-slate-800 pb-4 sticky top-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md z-10 py-2">
+                        <div>
+                            <h2 id="exam-title-display" class="font-heading text-xl sm:text-2xl font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center gap-2.5">
+                                <i class="fa-solid fa-circle-question"></i> Luyện Tập Trắc Nghiệm Củng Cố
+                            </h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">
+                                Học sinh: <span id="lbl-student-name" class="font-bold text-slate-800 dark:text-white"></span> — Lớp: <span id="lbl-student-class" class="font-bold text-slate-800 dark:text-white"></span>
+                            </p>
+                        </div>
+                        <div class="bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 px-4 py-2.5 rounded-xl text-xs font-bold border border-indigo-200 dark:border-indigo-800 flex items-center gap-2 shadow-2xs">
+                            <i class="fa-solid fa-stopwatch text-sm animate-pulse text-indigo-500"></i>
+                            <span>Thời gian làm bài: <strong id="quiz-timer-display" class="font-mono text-sm">00:00</strong></span>
+                        </div>
+                    </div>
+
+                    <div id="quiz-container" class="space-y-6">
+                        <!-- Render câu hỏi từ appState.published.quiz -->
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <p class="text-xs text-slate-400"><i class="fa-solid fa-circle-info mr-1"></i> Kiểm tra kỹ các đáp án trước khi nộp bài</p>
+                        <button onclick="submitQuiz()" class="px-8 py-3.5 bg-gradient-to-r from-emerald-600 to-indigo-600 text-white font-heading font-extrabold rounded-xl hover:opacity-95 transition shadow-lg shadow-emerald-600/20 btn-micro flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Nộp Bài & Chấm Điểm
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bước 3: Kết quả chi tiết, Lời giải thích gốc & Bảng xếp hạng -->
+                <div id="quiz-result-card" class="hidden space-y-8 max-w-3xl mx-auto">
+                    <div class="bg-gradient-to-br from-emerald-600 via-teal-600 to-indigo-700 text-white p-8 sm:p-10 rounded-3xl shadow-xl text-center space-y-3 relative overflow-hidden">
+                        <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-4xl mx-auto mb-2 shadow-inner border border-white/30">
+                            <i class="fa-solid fa-trophy text-yellow-300"></i>
+                        </div>
+                        <h3 class="font-heading text-3xl font-extrabold">Kết Quả Bài Làm</h3>
+                        <p id="score-summary-text" class="text-xl font-bold"></p>
+                        <div class="flex flex-wrap justify-center gap-3 pt-1">
+                            <span id="ranking-position-text" class="text-xs sm:text-sm bg-white/20 backdrop-blur-xs py-1.5 px-4 rounded-full font-semibold border border-white/20"></span>
+                            <span id="time-spent-text" class="text-xs sm:text-sm bg-white/20 backdrop-blur-xs py-1.5 px-4 rounded-full font-semibold border border-white/20"></span>
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="retakeQuiz()" class="px-6 py-2.5 bg-white text-emerald-700 font-heading font-extrabold rounded-xl hover:bg-emerald-50 transition text-sm shadow-lg btn-micro">
+                                <i class="fa-solid fa-rotate-right mr-1"></i> Làm Lại Bài
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chi tiết đáp án và lời giải thích gốc -->
+                    <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 space-y-4">
+                        <h3 class="font-heading text-lg font-extrabold text-slate-800 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-check text-emerald-500"></i> Chi Tiết Đáp Án & Giải Thích
+                        </h3>
+                        <div id="quiz-review-details" class="space-y-4"></div>
+                    </div>
+
+                    <!-- Bảng xếp hạng -->
+                    <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
+                        <h3 class="font-heading text-xl font-extrabold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-ranking-star text-yellow-500"></i> Bảng Xếp Hạng Thành Tích Học Sinh
+                        </h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b dark:border-slate-800 text-xs text-slate-400 uppercase tracking-wider bg-slate-50 dark:bg-slate-800/60">
+                                        <th class="p-3.5 rounded-l-xl">Hạng</th>
+                                        <th class="p-3.5">Học Sinh</th>
+                                        <th class="p-3.5">Lớp</th>
+                                        <th class="p-3.5">Thời Gian</th>
+                                        <th class="p-3.5 text-right rounded-r-xl">Điểm Số</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leaderboard-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 text-sm"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 7. HỆ THỐNG QUẢN TRỊ ADMIN TOÀN DIỆN (CMS)
+                 ========================================== -->
+            <div id="admin-cms" class="tab-content space-y-6">
+                <!-- Thanh công cụ Lưu Nháp / Xuất Bản / Khôi Phục Gốc -->
+                <div class="bg-slate-900 text-white p-5 sm:p-6 rounded-3xl shadow-xl border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="font-heading text-lg sm:text-xl font-extrabold">Trung Tâm Quản Trị Hệ Thống (Admin CMS)</h2>
+                                <span id="cms-status-badge" class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-semibold">Đã đồng bộ</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-0.5">Chỉnh sửa độc lập từng phần • Lưu nháp an toàn • Bảo toàn 100% nội dung gốc</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button onclick="saveAdminDraft()" class="px-4 py-2.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-xl text-xs font-heading font-bold transition flex items-center gap-1.5 btn-micro">
+                            <i class="fa-solid fa-floppy-disk"></i> Lưu Bản Nháp
+                        </button>
+                        <button onclick="publishAdminChanges()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-heading font-bold transition shadow-lg shadow-emerald-600/30 flex items-center gap-1.5 btn-micro">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Xuất Bản Chính Thức
+                        </button>
+                        <button onclick="restoreOriginalFactoryData()" class="px-4 py-2.5 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40 rounded-xl text-xs font-heading font-bold transition flex items-center gap-1.5 btn-micro" title="Khôi phục nguyên trạng 100% dữ liệu SGK gốc">
+                            <i class="fa-solid fa-rotate-left"></i> Khôi Phục Nội Dung Gốc
+                        </button>
+                        <button onclick="logoutAdmin()" class="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition btn-micro" title="Đăng xuất Admin">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu con của Admin CMS -->
+                <div class="flex flex-wrap gap-2 bg-white dark:bg-slate-900 p-2 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <button onclick="switchAdminSubtab('cms-lessons')" class="cms-tab-btn px-4 py-2.5 rounded-xl text-xs font-heading font-bold bg-indigo-600 text-white transition" data-sub="cms-lessons">
+                        <i class="fa-solid fa-book mr-1.5"></i> 1. Quản lý Bài học (5 mục)
+                    </button>
+                    <button onclick="switchAdminSubtab('cms-casestudy')" class="cms-tab-btn px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-sub="cms-casestudy">
+                        <i class="fa-solid fa-building mr-1.5"></i> 2. Ví dụ thực tế
+                    </button>
+                    <button onclick="switchAdminSubtab('cms-media')" class="cms-tab-btn px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-sub="cms-media">
+                        <i class="fa-solid fa-photo-film mr-1.5"></i> 3. Video & Trò chơi
+                    </button>
+                    <button onclick="switchAdminSubtab('cms-quiz')" class="cms-tab-btn px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-sub="cms-quiz">
+                        <i class="fa-solid fa-list-check mr-1.5"></i> 4. Câu hỏi & Bài kiểm tra
+                    </button>
+                    <button onclick="switchAdminSubtab('cms-students')" class="cms-tab-btn px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-sub="cms-students">
+                        <i class="fa-solid fa-users-gear mr-1.5"></i> 5. Học sinh, Lịch sử & Xếp hạng
+                    </button>
+                    <button onclick="switchAdminSubtab('cms-branding')" class="cms-tab-btn px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-sub="cms-branding">
+                        <i class="fa-solid fa-palette mr-1.5"></i> 6. Banner & Giao diện
+                    </button>
+                    <button onclick="switchAdminSubtab('cms-history')" class="cms-tab-btn px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-sub="cms-history">
+                        <i class="fa-solid fa-clock-rotate-left mr-1.5"></i> 7. Lịch sử & Khôi phục (<span id="revision-count-badge">0</span>)
+                    </button>
+                </div>
+
+                <!-- SUBTAB 1: QUẢN LÝ TỪNG BÀI HỌC ĐỘC LẬP -->
+                <div id="cms-lessons" class="admin-subtab active bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6">
+                    <div class="flex flex-wrap justify-between items-center gap-3">
+                        <div>
+                            <h3 class="font-heading text-lg font-extrabold text-slate-800 dark:text-white">Quản Lý & Chỉnh Sửa Từng Mục Kiến Thức</h3>
+                            <p class="text-xs text-slate-500">Khi chỉnh sửa một mục, các mục khác được cô lập hoàn toàn và không bị ảnh hưởng.</p>
+                        </div>
+                        <button onclick="addNewKnowledgeSection()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Thêm Mục Kiến Thức Mới
+                        </button>
+                    </div>
+                    <div id="cms-lessons-list" class="space-y-6"></div>
+                </div>
+
+                <!-- SUBTAB 2: QUẢN LÝ VÍ DỤ THỰC TẾ -->
+                <div id="cms-casestudy" class="admin-subtab bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-5">
+                    <h3 class="font-heading text-lg font-extrabold text-slate-800 dark:text-white">Quản Lý Tình Huống Thực Tế</h3>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Tiêu đề tình huống:</label>
+                        <input type="text" id="cms-cs-title" oninput="updateDraftCaseStudy()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-semibold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Nội dung câu chuyện tình huống:</label>
+                        <textarea id="cms-cs-story" rows="4" oninput="updateDraftCaseStudy()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm leading-relaxed"></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+                            <label class="block text-xs font-bold text-emerald-600">Điểm nhấn 1 - Tiêu đề:</label>
+                            <input type="text" id="cms-cs-h1-title" oninput="updateDraftCaseStudy()" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-bold">
+                            <label class="block text-xs font-bold text-slate-500">Điểm nhấn 1 - Mô tả:</label>
+                            <textarea id="cms-cs-h1-desc" rows="2" oninput="updateDraftCaseStudy()" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs"></textarea>
+                        </div>
+                        <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+                            <label class="block text-xs font-bold text-emerald-600">Điểm nhấn 2 - Tiêu đề:</label>
+                            <input type="text" id="cms-cs-h2-title" oninput="updateDraftCaseStudy()" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-bold">
+                            <label class="block text-xs font-bold text-slate-500">Điểm nhấn 2 - Mô tả:</label>
+                            <textarea id="cms-cs-h2-desc" rows="2" oninput="updateDraftCaseStudy()" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBTAB 3: QUẢN LÝ HÌNH ẢNH, VIDEO & TRÒ CHƠI -->
+                <div id="cms-media" class="admin-subtab bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Cấu hình Video -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+                            <h4 class="font-heading font-bold text-base text-sky-600 flex items-center gap-2">
+                                <i class="fa-solid fa-video"></i> Quản Lý Chuyên Mục Video
+                            </h4>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">Tiêu đề thông báo gốc:</label>
+                                <input type="text" id="cms-video-title" oninput="updateDraftMedia()" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">Mô tả chi tiết:</label>
+                                <textarea id="cms-video-desc" rows="2" oninput="updateDraftMedia()" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">Link YouTube Embed (Để trống nếu giữ nguyên trạng thái chờ gốc):</label>
+                                <input type="text" id="cms-video-url" oninput="updateDraftMedia()" placeholder="Ví dụ: https://www.youtube.com/embed/..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Cấu hình Trò chơi -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+                            <h4 class="font-heading font-bold text-base text-indigo-600 flex items-center gap-2">
+                                <i class="fa-solid fa-gamepad"></i> Quản Lý Chuyên Mục Trò Chơi
+                            </h4>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">Tiêu đề thông báo gốc:</label>
+                                <input type="text" id="cms-game-title" oninput="updateDraftMedia()" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 mb-1">Mô tả chi tiết:</label>
+                                <textarea id="cms-game-desc" rows="2" oninput="updateDraftMedia()" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm"></textarea>
+                            </div>
+                            <div class="flex items-center gap-3 pt-2">
+                                <input type="checkbox" id="cms-game-enable-flashcard" onchange="updateDraftMedia()" class="w-4 h-4 text-emerald-600 rounded">
+                                <label for="cms-game-enable-flashcard" class="text-xs font-semibold text-slate-700 dark:text-slate-300">Bật thêm Minigame Lật Thẻ Thuật Ngữ bên dưới thông báo gốc</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBTAB 4: QUẢN LÝ CÂU HỎI, ĐÁP ÁN & BÀI KIỂM TRA -->
+                <div id="cms-quiz" class="admin-subtab bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6">
+                    <div class="flex flex-wrap justify-between items-center gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                        <div>
+                            <h3 class="font-heading text-lg font-extrabold text-slate-800 dark:text-white">Quản Lý Bài Kiểm Tra & Ngân Hàng Câu Hỏi</h3>
+                            <p class="text-xs text-slate-500">4 câu hỏi gốc cùng đáp án và lời giải thích được bảo toàn nguyên vẹn.</p>
+                        </div>
+                        <button onclick="addNewQuizQuestion()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Thêm Câu Hỏi Mới
+                        </button>
+                    </div>
+                    <div id="cms-quiz-list" class="space-y-5"></div>
+                </div>
+
+                <!-- SUBTAB 5: QUẢN LÝ HỌC SINH, LỊCH SỬ LÀM BÀI, THỜI GIAN & BẢNG XẾP HẠNG -->
+                <div id="cms-students" class="admin-subtab bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6">
+                    <div class="flex flex-wrap justify-between items-center gap-4">
+                        <div>
+                            <h3 class="font-heading text-lg font-extrabold text-slate-800 dark:text-white">Quản Lý Học Sinh, Lịch Sử & Thời Gian Làm Bài</h3>
+                            <p class="text-xs text-slate-500">Theo dõi chi tiết điểm số, thời gian hoàn thành và quản lý bảng xếp hạng.</p>
+                        </div>
+                        <button onclick="addManualStudentRecord()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-user-plus"></i> Thêm Kết Quả Học Sinh
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b dark:border-slate-800 text-xs text-slate-400 uppercase bg-slate-50 dark:bg-slate-800/60">
+                                    <th class="p-3.5">Hạng</th>
+                                    <th class="p-3.5">Họ và Tên</th>
+                                    <th class="p-3.5">Lớp</th>
+                                    <th class="p-3.5">Điểm Số</th>
+                                    <th class="p-3.5">Thời Gian Làm Bài</th>
+                                    <th class="p-3.5">Thời Điểm Nộp</th>
+                                    <th class="p-3.5 text-right">Thao Tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cms-students-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 text-sm"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SUBTAB 6: CHỈNH SỬA BANNER, LOGO & GIAO DIỆN -->
+                <div id="cms-branding" class="admin-subtab bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-5">
+                    <h3 class="font-heading text-lg font-extrabold text-slate-800 dark:text-white">Tuỳ Chỉnh Thương Hiệu, Banner & Giao Diện</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Chữ viết tắt Logo (Góc trái trên):</label>
+                            <input type="text" id="cms-brand-logo" oninput="updateDraftBranding()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-bold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Tên Website (Header):</label>
+                            <input type="text" id="cms-brand-title" oninput="updateDraftBranding()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-bold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Tiêu đề chính Banner Trang chủ:</label>
+                            <input type="text" id="cms-hero-title" oninput="updateDraftBranding()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-bold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Slogan Banner Trang chủ:</label>
+                            <input type="text" id="cms-hero-slogan" oninput="updateDraftBranding()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBTAB 7: LỊCH SỬ CHỈNH SỬA & KHÔI PHỤC PHIÊN BẢN CŨ -->
+                <div id="cms-history" class="admin-subtab bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-5">
+                    <div class="flex flex-wrap justify-between items-center gap-4">
+                        <div>
+                            <h3 class="font-heading text-lg font-extrabold text-slate-800 dark:text-white">Lịch Sử Phiên Bản & Sao Lưu Tự Động</h3>
+                            <p class="text-xs text-slate-500">Mỗi lần lưu nháp hoặc xuất bản đều được ghi lại để khôi phục bất kỳ lúc nào.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="exportBackupSnapshotJSON()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-file-arrow-down"></i> Xuất File Backup (.JSON)
+                            </button>
+                            <button onclick="restoreOriginalFactoryData()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition">
+                                <i class="fa-solid fa-shield-heart mr-1"></i> Khôi Phục Bản Gốc Mặc Định (SGK 10)
+                            </button>
+                        </div>
+                    </div>
+                    <div id="cms-revisions-list" class="space-y-3"></div>
+                </div>
+
+            </div>
+
+            <!-- FOOTER HỌC THUẬT CHUYÊN NGHIỆP -->
+            <footer class="mt-12 pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 dark:text-slate-500">
+                <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-lg bg-gradient-to-br from-emerald-500 to-indigo-600 text-white font-heading font-bold flex items-center justify-center text-[10px]">CP</span>
+                    <span>© Học liệu số môn <strong>Giáo dục Kinh tế và Pháp luật 10</strong> — Chuyên đề: Công Ty Cổ Phần</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="switchTab('knowledge')" class="hover:text-emerald-500 transition">Lý thuyết</button>
+                    <button onclick="switchTab('casestudy')" class="hover:text-emerald-500 transition">Tình huống</button>
+                    <button onclick="switchTab('practice')" class="hover:text-emerald-500 transition">Trắc nghiệm</button>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- MODAL ĐĂNG NHẬP ADMIN (Tài khoản: admin / Mật khẩu: yen123) -->
+    <div id="admin-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-2xl w-full max-w-md relative border border-slate-200 dark:border-slate-800">
+            <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 dark:hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 shadow-lg">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3 class="font-heading text-2xl font-extrabold text-slate-800 dark:text-white">Đăng Nhập Quản Trị</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Hệ thống CMS Quản lý Học tập & Bảo toàn Dữ liệu</p>
+            </div>
+
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Tài khoản Quản trị:</label>
+                    <input type="text" id="admin-user" required placeholder="admin" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Mật khẩu:</label>
+                    <input type="password" id="admin-pass" required placeholder="••••••" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none text-sm">
+                </div>
+                <div id="admin-login-error" class="hidden p-3 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-600 dark:text-rose-300 text-xs font-semibold text-center">
+                    Sai tài khoản hoặc mật khẩu! (Tài khoản: admin | Mật khẩu: yen123)
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-indigo-600 text-white font-heading font-bold rounded-xl hover:opacity-95 transition shadow-lg btn-micro">
+                    Truy Cập Quản Trị Hệ Thống
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         JAVASCRIPT: BẢO TOÀN DỮ LIỆU GỐC 100%, BACKUP & ADMIN CMS
+         ========================================================== -->
+    <script>
+        const STORAGE_KEY = 'EDTECH_CTCP_PERSISTENT_DB_V2';
+        const BACKUP_SNAPSHOT_KEY = 'EDTECH_CTCP_V1_BACKUP_SNAPSHOT';
+
+        // 1. BẢN SAO LƯU BẤT BIẾN CHỨA 100% NỘI DUNG GỐC (KHÔNG THAY ĐỔI DÙ CHỈ 1 CHỮ)
+        const ORIGINAL_IMMUTABLE_DATA = Object.freeze({
+            branding: {
+                logoText: "CP",
+                siteTitle: "Kiến Thức Doanh Nghiệp",
+                siteSubtitle: "Môn Giáo dục Kinh tế và Pháp luật 10",
+                heroBadge: "Chương trình chuẩn Bộ GD&ĐT",
+                heroTitle: "CÔNG TY CỔ PHẦN",
+                heroSlogan: "Một mô hình doanh nghiệp hiện đại, huy động vốn linh hoạt, phát triển bền vững"
+            },
+            knowledge: [
+                {
+                    id: 1,
+                    title: "1. Khái niệm",
+                    colorTheme: "emerald",
+                    isOrg: false,
+                    items: [
+                        "Công ty cổ phần là doanh nghiệp được hình thành bằng vốn đóng góp của nhiều người.",
+                        "Có tư cách pháp nhân kể từ ngày được cấp giấy chứng nhận đăng ký kinh doanh."
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "2. Đặc điểm",
+                    colorTheme: "sky",
+                    isOrg: false,
+                    items: [
+                        "Mức độ rủi ro của các cổ đông không cao.",
+                        "Cơ cấu vốn linh hoạt, có khả năng huy động vốn cao thông qua phát hành cổ phần chào bán ra công chúng.",
+                        "Số lượng cổ đông tối thiểu là 3 và không hạn chế số lượng tối đa.",
+                        "Cổ đông có quyền tự do chuyển nhượng cổ phần."
+                    ]
+                },
+                {
+                    id: 3,
+                    title: "3. Vốn, điều lệ, cổ phần, cổ phiếu, cổ đông",
+                    colorTheme: "amber",
+                    isOrg: false,
+                    items: [
+                        "<b>Vốn điều lệ:</b> Được chia thành nhiều phần bằng nhau gọi là cổ phần.",
+                        "<b>Cổ phần:</b> Các phần bằng nhau của vốn điều lệ.",
+                        "<b>Cổ phiếu / Chứng khoán:</b> Công ty có quyền phát hành chứng khoán để huy động vốn.",
+                        "<b>Cổ đông:</b> Người sở hữu cổ phần, có thể là tổ chức hoặc cá nhân."
+                    ]
+                },
+                {
+                    id: 4,
+                    title: "4. Cơ cấu tổ chức",
+                    colorTheme: "indigo",
+                    isOrg: true,
+                    items: [
+                        "Đại hội đồng cổ đông (cơ quan tối cao)",
+                        "Hội đồng quản trị",
+                        "Ban kiểm soát",
+                        "Giám đốc hoặc Tổng Giám đốc (do Hội đồng quản trị thuê hoặc bổ nhiệm)"
+                    ]
+                },
+                {
+                    id: 5,
+                    title: "5. Trách nhiệm và quyền hạn",
+                    colorTheme: "rose",
+                    isOrg: false,
+                    items: [
+                        "<b>Trách nhiệm:</b> Cổ đông chỉ chịu trách nhiệm về các khoản nợ và nghĩa vụ tài sản khác của doanh nghiệp trong phạm vi số vốn đã góp.",
+                        "<b>Quyền hạn của cổ đông:</b> Bầu ra Hội đồng quản trị, tự do chuyển nhượng cổ phần.",
+                        "<b>Quyền hạn của công ty:</b> Phát hành chứng khoán để huy động vốn.",
+                        "<b>Quyền hạn của Hội đồng quản trị:</b> Thuê, bổ nhiệm Giám đốc (Tổng Giám đốc) hoặc Giám đốc điều hành."
+                    ]
+                }
+            ],
+            caseStudy: {
+                title: "Công ty Cổ phần Công nghệ A",
+                story: "Công ty A được thành lập bởi 50 cổ đông ban đầu với tổng vốn điều lệ là 10 tỷ đồng. Để mở rộng dây chuyền sản xuất phần mềm AI, công ty quyết định phát hành thêm 1 triệu cổ phiếu chào bán rộng rãi ra công chúng. Nhà đầu tư B mua 5.000 cổ phiếu và trở thành cổ đông của công ty. Cuối năm, công ty đạt lợi nhuận và tiến hành chia cổ tức bằng tiền mặt cho cổ đông B tương ứng với số cổ phần sở hữu.",
+                highlight1Title: "Huy động vốn linh hoạt",
+                highlight1Desc: "Thông qua việc phát hành cổ phiếu rộng rãi ra công chúng để thu hút nguồn vốn nhàn rỗi trong xã hội.",
+                highlight2Title: "Giới hạn trách nhiệm",
+                highlight2Desc: "Nhà đầu tư B chỉ chịu rủi ro và trách nhiệm tài chính trong phạm vi đúng số tiền đã mua 5.000 cổ phiếu."
+            },
+            video: {
+                title: "Nội dung video đang được cập nhật...",
+                description: "Video bài giảng trực quan về mô hình Công ty Cổ phần sẽ được giáo viên bổ sung vào thời gian tới.",
+                embedUrl: ""
+            },
+            game: {
+                title: "Trò chơi tương tác đang được phát triển...",
+                description: "Minigame ghép thẻ kiến thức và ô chữ kỳ thú về Công ty Cổ phần sắp ra mắt!",
+                enableFlashcard: false
+            },
+            quiz: [
+                {
+                    id: 1,
+                    question: "Số lượng cổ đông tối thiểu trong một công ty cổ phần theo quy định là bao nhiêu?",
+                    options: ["2 cổ đông", "3 cổ đông", "5 cổ đông", "Không giới hạn tối thiểu"],
+                    correct: 1,
+                    explanation: "Số lượng cổ đông tối thiểu là 3 và không hạn chế số lượng tối đa."
+                },
+                {
+                    id: 2,
+                    question: "Cơ quan quyết định cao nhất của công ty cổ phần là cơ quan nào?",
+                    options: ["Hội đồng quản trị", "Ban kiểm soát", "Đại hội đồng cổ đông", "Giám đốc hoặc Tổng Giám đốc"],
+                    correct: 2,
+                    explanation: "Đại hội đồng cổ đông gồm tất cả cổ đông có quyền biểu quyết là cơ quan tối cao của công ty cổ phần."
+                },
+                {
+                    id: 3,
+                    question: "Cổ đông trong công ty cổ phần chịu trách nhiệm về các khoản nợ của doanh nghiệp như thế nào?",
+                    options: [
+                        "Chịu trách nhiệm bằng toàn bộ tài sản riêng của mình",
+                        "Chịu trách nhiệm trong phạm vi số vốn đã góp vào doanh nghiệp",
+                        "Không phải chịu bất kỳ trách nhiệm nào về nợ",
+                        "Chịu trách nhiệm liên đới với các thành viên sáng lập"
+                    ],
+                    correct: 1,
+                    explanation: "Cổ đông chỉ chịu trách nhiệm về các khoản nợ và nghĩa vụ tài sản khác của doanh nghiệp trong phạm vi số vốn đã góp."
+                },
+                {
+                    id: 4,
+                    question: "Vốn điều lệ của công ty cổ phần được chia thành các phần bằng nhau gọi là gì?",
+                    options: ["Cổ phiếu", "Trái phiếu", "Cổ phần", "Vốn góp liên doanh"],
+                    correct: 2,
+                    explanation: "Vốn điều lệ được chia thành nhiều phần bằng nhau gọi là cổ phần."
+                }
+            ],
+            leaderboard: [
+                { id: 101, name: "Nguyễn Văn Minh", class: "10A1", score: 4, total: 4, timeSpentSeconds: 45, submittedAt: "08:30 - Mặc định" },
+                { id: 102, name: "Lê Hoàng Nam", class: "10A3", score: 4, total: 4, timeSpentSeconds: 58, submittedAt: "09:15 - Mặc định" },
+                { id: 103, name: "Trần Thị Lan", class: "10A2", score: 3, total: 4, timeSpentSeconds: 62, submittedAt: "10:00 - Mặc định" }
+            ]
+        });
+
+        // 2. STATE QUẢN LÝ DỮ LIỆU (BAO GỒM PUBLISHED, DRAFT, REVISIONS)
+        let appState = {
+            published: null,
+            draft: null,
+            revisions: []
+        };
+
+        let isAdminLoggedIn = false;
+        let currentStudent = { name: '', class: '' };
+        let quizTimerInterval = null;
+        let quizElapsedSeconds = 0;
+
+        // Deep copy helper
+        const clone = (obj) => JSON.parse(JSON.stringify(obj));
+
+        // Hộp thoại xác nhận tuỳ chỉnh (Không dùng alert/confirm/prompt của trình duyệt)
+        function openCustomConfirm({ title, message, onConfirm }) {
+            const modal = document.getElementById('custom-dialog-modal');
+            document.getElementById('custom-dialog-title').innerText = title || 'Xác nhận thao tác';
+            document.getElementById('custom-dialog-message').innerText = message || '';
+            document.getElementById('custom-dialog-inputs').classList.add('hidden');
+            document.getElementById('custom-dialog-inputs').innerHTML = '';
+            modal.classList.remove('hidden');
+
+            const btnCancel = document.getElementById('custom-dialog-cancel');
+            const btnConfirm = document.getElementById('custom-dialog-confirm');
+
+            btnCancel.onclick = () => modal.classList.add('hidden');
+            btnConfirm.onclick = () => {
+                modal.classList.add('hidden');
+                if (typeof onConfirm === 'function') onConfirm();
+            };
+        }
+
+        // 3. KHỞI TẠO & TỰ ĐỘNG BACKUP DỮ LIỆU TRƯỚC KHI NÂNG CẤP
+        function initDatabase() {
+            const savedRaw = localStorage.getItem(STORAGE_KEY);
+            // Tự động tạo bản Backup Snapshot trước khi áp dụng bất kỳ thay đổi nào
+            if (savedRaw && !localStorage.getItem(BACKUP_SNAPSHOT_KEY)) {
+                localStorage.setItem(BACKUP_SNAPSHOT_KEY, savedRaw);
+            } else if (!localStorage.getItem(BACKUP_SNAPSHOT_KEY)) {
+                localStorage.setItem(BACKUP_SNAPSHOT_KEY, JSON.stringify({
+                    backedUpAt: new Date().toISOString(),
+                    originalData: ORIGINAL_IMMUTABLE_DATA
+                }));
+            }
+
+            if (savedRaw) {
+                try {
+                    appState = JSON.parse(savedRaw);
+                } catch (e) {
+                    resetToFactoryState();
+                }
+            } else {
+                resetToFactoryState();
+            }
+            renderAllPublicViews();
+        }
+
+        function exportBackupSnapshotJSON() {
+            try {
+                const payload = {
+                    backupTimestamp: new Date().toLocaleString('vi-VN'),
+                    application: "Kiến Thức Doanh Nghiệp - Công Ty Cổ Phần | EdTech Pro",
+                    immutableFactoryData: ORIGINAL_IMMUTABLE_DATA,
+                    currentState: appState
+                };
+                const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Backup_CongTyCoPhan_GDKTPL10_${Date.now()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast("Đã tải xuống bản sao lưu dự phòng (.JSON) thành công!");
+            } catch (err) {
+                showToast("Đã lưu bản sao lưu dự phòng vào bộ nhớ trình duyệt!", "amber");
+            }
+        }
+
+        function resetToFactoryState() {
+            const initialCopy = clone(ORIGINAL_IMMUTABLE_DATA);
+            appState = {
+                published: clone(initialCopy),
+                draft: clone(initialCopy),
+                revisions: [
+                    {
+                        id: Date.now(),
+                        timestamp: new Date().toLocaleString('vi-VN'),
+                        note: "Bản sao lưu gốc ban đầu (Chuẩn SGK GDKT&PL 10)",
+                        snapshot: clone(initialCopy)
+                    }
+                ]
+            };
+            persistDatabase();
+        }
+
+        function persistDatabase() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+            // Tự động đồng bộ REST API nếu chạy cùng Backend Server
+            fetch('/api/state/sync', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(appState)
+            }).catch(() => {});
+        }
+
+        // Thông báo Toast hiện đại
+        function showToast(message, type = 'emerald') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgClass = type === 'emerald'
+                ? 'bg-emerald-600 border-emerald-400/40'
+                : type === 'amber'
+                ? 'bg-amber-600 border-amber-400/40'
+                : 'bg-rose-600 border-rose-400/40';
+            toast.className = `${bgClass} border text-white px-4 py-3 rounded-2xl shadow-2xl text-xs font-heading font-bold flex items-center gap-2.5 pointer-events-auto transition transform duration-300`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-sm"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => { toast.remove(); }, 3200);
+        }
+
+        // 4. ĐỒ HỌA VECTOR SVG MINH HỌA CHO TỪNG MỤC KIẾN THỨC
+        function getKnowledgeSectionSVG(index) {
+            const svgs = [
+                // 1. Khái niệm (Vốn góp nhiều người + Tư cách pháp nhân)
+                `<svg class="w-24 h-24 shrink-0" viewBox="0 0 100 100" fill="none">
+                    <rect x="10" y="14" width="80" height="72" rx="16" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+                    <rect x="26" y="28" width="48" height="46" rx="6" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+                    <line x1="34" y1="40" x2="66" y2="40" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="34" y1="50" x2="58" y2="50" stroke="#6EE7B7" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="62" cy="64" r="10" fill="#059669"/>
+                    <path d="M58 64 L61 67 L67 61" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`,
+                // 2. Đặc điểm (Tối thiểu 3 cổ đông, phát hành cổ phần, tự do chuyển nhượng)
+                `<svg class="w-24 h-24 shrink-0" viewBox="0 0 100 100" fill="none">
+                    <rect x="10" y="14" width="80" height="72" rx="16" fill="#E0F2FE" stroke="#0284C7" stroke-width="2"/>
+                    <circle cx="34" cy="42" r="9" fill="#0284C7"/>
+                    <circle cx="66" cy="42" r="9" fill="#0284C7"/>
+                    <circle cx="50" cy="34" r="10" fill="#0369A1"/>
+                    <path d="M24 68 C24 56 76 56 76 68" stroke="#0284C7" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M35 74 H65" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>`,
+                // 3. Vốn điều lệ, cổ phần, cổ phiếu, cổ đông
+                `<svg class="w-24 h-24 shrink-0" viewBox="0 0 100 100" fill="none">
+                    <rect x="10" y="14" width="80" height="72" rx="16" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="22" fill="#FDE68A" stroke="#D97706" stroke-width="2"/>
+                    <path d="M50 28 V50 H72" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M50 50 L34 65" stroke="#B45309" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="50" cy="50" r="4" fill="#B45309"/>
+                </svg>`,
+                // 4. Cơ cấu tổ chức
+                `<svg class="w-24 h-24 shrink-0" viewBox="0 0 100 100" fill="none">
+                    <rect x="10" y="14" width="80" height="72" rx="16" fill="#E0E7FF" stroke="#6366F1" stroke-width="2"/>
+                    <rect x="38" y="24" width="24" height="14" rx="4" fill="#4F46E5"/>
+                    <line x1="50" y1="38" x2="50" y2="48" stroke="#4F46E5" stroke-width="2"/>
+                    <line x1="28" y1="48" x2="72" y2="48" stroke="#4F46E5" stroke-width="2"/>
+                    <rect x="18" y="52" width="20" height="14" rx="3" fill="#6366F1"/>
+                    <rect x="40" y="52" width="20" height="14" rx="3" fill="#6366F1"/>
+                    <rect x="62" y="52" width="20" height="14" rx="3" fill="#6366F1"/>
+                </svg>`,
+                // 5. Trách nhiệm và quyền hạn
+                `<svg class="w-24 h-24 shrink-0" viewBox="0 0 100 100" fill="none">
+                    <rect x="10" y="14" width="80" height="72" rx="16" fill="#FFE4E6" stroke="#F43F5E" stroke-width="2"/>
+                    <path d="M50 24 L70 32 V48 C70 62 50 74 50 74 C50 74 30 62 30 48 V32 L50 24 Z" fill="#ffffff" stroke="#E11D48" stroke-width="2.5"/>
+                    <path d="M42 49 L48 55 L59 43" stroke="#E11D48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`
+            ];
+            return svgs[index % svgs.length];
+        }
+
+        // RENDER TOÀN BỘ GIAO DIỆN HỌC TẬP TỪ DỮ LIỆU PUBLISHED
+        function renderAllPublicViews() {
+            const pub = appState.published;
+
+            // Render Branding & Banner
+            document.getElementById('brand-logo-box').innerText = pub.branding.logoText;
+            document.getElementById('brand-site-title').innerText = pub.branding.siteTitle;
+            document.getElementById('brand-site-subtitle').innerText = pub.branding.siteSubtitle;
+            document.getElementById('hero-badge-display').innerHTML = `<i class="fa-solid fa-star text-yellow-300"></i> ${pub.branding.heroBadge}`;
+            document.getElementById('hero-title-display').innerText = pub.branding.heroTitle;
+            document.getElementById('hero-slogan-display').innerText = pub.branding.heroSlogan;
+
+            // Render Thống kê
+            document.getElementById('stat-lessons-count').innerText = `${pub.knowledge.length} phần`;
+            document.getElementById('stat-questions-count').innerText = `${pub.quiz.length} câu`;
+            document.getElementById('stat-attempts-count').innerText = `${pub.leaderboard.length} lượt`;
+
+            // Render 5 Mục Kiến Thức
+            renderPublicKnowledge(pub.knowledge);
+
+            // Render Ví dụ thực tế
+            renderPublicCaseStudy(pub.caseStudy);
+
+            // Render Video & Game
+            renderPublicVideo(pub.video);
+            renderPublicGame(pub.game);
+
+            // Render Bảng xếp hạng
+            renderLeaderboard();
+        }
+
+        function renderPublicKnowledge(knowledgeList) {
+            const themeMap = {
+                emerald: { box: 'bg-emerald-50/60 dark:bg-emerald-950/25 border-emerald-200/80 dark:border-emerald-900/70', title: 'text-emerald-800 dark:text-emerald-300', badge: 'bg-emerald-600', pill: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300' },
+                sky: { box: 'bg-sky-50/60 dark:bg-sky-950/25 border-sky-200/80 dark:border-sky-900/70', title: 'text-sky-800 dark:text-sky-300', badge: 'bg-sky-600', pill: 'bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300' },
+                amber: { box: 'bg-amber-50/60 dark:bg-amber-950/25 border-amber-200/80 dark:border-amber-900/70', title: 'text-amber-800 dark:text-amber-300', badge: 'bg-amber-600', pill: 'bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300' },
+                indigo: { box: 'bg-indigo-50/60 dark:bg-indigo-950/25 border-indigo-200/80 dark:border-indigo-900/70', title: 'text-indigo-800 dark:text-indigo-300', badge: 'bg-indigo-600', pill: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300' },
+                rose: { box: 'bg-rose-50/60 dark:bg-rose-950/25 border-rose-200/80 dark:border-rose-900/70', title: 'text-rose-800 dark:text-rose-300', badge: 'bg-rose-600', pill: 'bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300' }
+            };
+
+            const container = document.getElementById('knowledge-sections-container');
+            let html = '';
+            knowledgeList.forEach((sec, idx) => {
+                const t = themeMap[sec.colorTheme] || themeMap.emerald;
+                const cleanTitle = sec.title.replace(/^[0-9]+\.\s*/, '');
+                html += `
+                    <div class="stagger-item interactive-card p-6 sm:p-7 rounded-3xl border ${t.box} space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="flex items-start gap-4 flex-1">
+                                <div class="hidden sm:block">
+                                    ${getKnowledgeSectionSVG(idx)}
+                                </div>
+                                <div class="space-y-3 flex-1">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="w-8 h-8 rounded-xl ${t.badge} text-white flex items-center justify-center text-xs font-heading font-extrabold shadow-sm">${idx + 1}</span>
+                                        <h3 class="font-heading text-lg sm:text-xl font-extrabold ${t.title}">${cleanTitle}</h3>
+                                    </div>
+                `;
+
+                if (sec.isOrg) {
+                    html += `
+                        <div class="pt-2 space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    `;
+                    sec.items.forEach((item, i) => {
+                        const icons = ['fa-crown', 'fa-user-tie', 'fa-shield-halved', 'fa-briefcase'];
+                        const stepLabels = ['Cấp quyết định cao nhất', 'Cơ quan quản lý', 'Cơ quan giám sát', 'Điều hành trực tiếp'];
+                        html += `
+                            <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-indigo-200/80 dark:border-indigo-900 text-center shadow-xs flex flex-col items-center justify-between hover:border-indigo-500 transition">
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-2">${stepLabels[i % stepLabels.length]}</span>
+                                <div class="w-11 h-11 rounded-2xl bg-indigo-100/80 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg mb-2">
+                                    <i class="fa-solid ${icons[i % icons.length]}"></i>
+                                </div>
+                                <p class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">${item}</p>
+                            </div>
+                        `;
+                    });
+                    html += `</div></div>`;
+                } else {
+                    html += `<ul class="space-y-2.5 text-slate-700 dark:text-slate-300 pl-1 font-medium text-sm sm:text-[15px] leading-relaxed">`;
+                    sec.items.forEach(item => {
+                        html += `
+                            <li class="flex items-start gap-2.5 bg-white/75 dark:bg-slate-900/60 p-3 rounded-xl border border-white/80 dark:border-slate-800/80 shadow-2xs">
+                                <i class="fa-solid fa-circle-check text-emerald-500 mt-1 text-xs shrink-0"></i>
+                                <span>${item}</span>
+                            </li>
+                        `;
+                    });
+                    html += `</ul>`;
+                }
+
+                html += `
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderPublicCaseStudy(cs) {
+            document.getElementById('casestudy-container').innerHTML = `
+                <div class="space-y-6">
+                    <!-- Tình huống gốc kèm đồ họa SVG minh họa -->
+                    <div class="bg-gradient-to-br from-emerald-50 via-teal-50/50 to-indigo-50/40 dark:from-emerald-950/30 dark:to-slate-900 p-6 sm:p-8 rounded-3xl border border-emerald-200/80 dark:border-emerald-900/70 flex flex-col lg:flex-row items-center gap-6">
+                        <div class="flex-1 space-y-3">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-heading font-bold">
+                                <i class="fa-solid fa-microchip"></i> Hồ Sơ Doanh Nghiệp Thực Tế
+                            </div>
+                            <h4 class="font-heading font-extrabold text-emerald-900 dark:text-emerald-300 text-xl sm:text-2xl">${cs.title}</h4>
+                            <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base">${cs.story}</p>
+                        </div>
+
+                        <!-- Custom SVG Infographic for Case Study A -->
+                        <div class="w-full lg:w-72 shrink-0 bg-white dark:bg-slate-900 p-5 rounded-2xl border border-emerald-200/60 dark:border-slate-800 shadow-md space-y-3">
+                            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
+                                <span class="text-xs font-heading font-extrabold text-slate-700 dark:text-slate-200">Thông số Tình huống</span>
+                                <span class="text-[11px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded-md">AI Tech</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2.5 text-center">
+                                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">Cổ đông sáng lập</p>
+                                    <p class="font-heading font-extrabold text-base text-emerald-600 dark:text-emerald-400">50 người</p>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">Vốn điều lệ</p>
+                                    <p class="font-heading font-extrabold text-base text-indigo-600 dark:text-indigo-400">10 Tỷ VNĐ</p>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">Phát hành thêm</p>
+                                    <p class="font-heading font-extrabold text-sm text-amber-600 dark:text-amber-400">1 Triệu CP</p>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">Nhà đầu tư B</p>
+                                    <p class="font-heading font-extrabold text-sm text-sky-600 dark:text-sky-400">5.000 CP</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2 Điểm nhấn phân tích gốc -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="interactive-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/50 flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+                            <div>
+                                <p class="font-heading font-extrabold text-slate-800 dark:text-white mb-1 text-base"><i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i> ${cs.highlight1Title}</p>
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">${cs.highlight1Desc}</p>
+                            </div>
+                        </div>
+                        <div class="interactive-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/50 flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg shrink-0">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <p class="font-heading font-extrabold text-slate-800 dark:text-white mb-1 text-base"><i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i> ${cs.highlight2Title}</p>
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">${cs.highlight2Desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPublicVideo(vid) {
+            let embedHtml = '';
+            if (vid.embedUrl && vid.embedUrl.trim() !== '') {
+                embedHtml = `
+                    <div class="mt-6 max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700">
+                        <iframe class="w-full h-full" src="${vid.embedUrl}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                `;
+            }
+            document.getElementById('video-container').innerHTML = `
+                <div class="py-6 space-y-8">
+                    <div class="max-w-xl mx-auto">
+                        <!-- Custom SVG Cinema Visual -->
+                        <svg class="w-28 h-28 mx-auto mb-4 animate-float-slow" viewBox="0 0 120 120" fill="none">
+                            <circle cx="60" cy="60" r="50" fill="#E0F2FE" stroke="#38BDF8" stroke-width="2"/>
+                            <rect x="28" y="36" width="64" height="48" rx="10" fill="#ffffff" stroke="#0284C7" stroke-width="2.5"/>
+                            <circle cx="60" cy="60" r="14" fill="#0284C7"/>
+                            <polygon points="56,53 68,60 56,67" fill="#ffffff"/>
+                        </svg>
+                        <h3 class="font-heading text-2xl font-extrabold text-slate-800 dark:text-white mb-2">${vid.title}</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm max-w-md mx-auto leading-relaxed">${vid.description}</p>
+                        ${embedHtml}
+                    </div>
+
+                    <!-- Tóm tắt Infographic hỗ trợ học tập trực quan ngay tại trang Video -->
+                    <div class="pt-6 border-t border-slate-100 dark:border-slate-800 max-w-4xl mx-auto text-left">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-heading font-extrabold text-sm uppercase tracking-wider text-sky-600 dark:text-sky-400 flex items-center gap-2">
+                                <i class="fa-solid fa-film"></i> Kịch Bản Tóm Tắt Kiến Thức Cốt Lõi (Storyboard)
+                            </h4>
+                            <button onclick="OnlyAdminOpenCMS('cms-media')" class="admin-only-btn ${isAdminLoggedIn ? '' : 'hidden'} text-xs text-indigo-600 font-bold hover:underline">
+                                + Nhúng link video YouTube
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-800">
+                                <span class="text-[10px] font-bold text-sky-600 bg-sky-100 dark:bg-sky-950 px-2 py-0.5 rounded-md">Phần 01</span>
+                                <p class="font-heading font-bold text-sm text-slate-800 dark:text-white mt-2">Sự hình thành & Pháp nhân</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Hình thành từ vốn góp nhiều người, có tư cách pháp nhân từ khi cấp phép đăng ký kinh doanh.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-800">
+                                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-100 dark:bg-emerald-950 px-2 py-0.5 rounded-md">Phần 02</span>
+                                <p class="font-heading font-bold text-sm text-slate-800 dark:text-white mt-2">Cổ phần & Huy động vốn</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Vốn điều lệ chia thành các cổ phần bằng nhau; công ty phát hành chứng khoán ra công chúng.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-800">
+                                <span class="text-[10px] font-bold text-indigo-600 bg-indigo-100 dark:bg-indigo-950 px-2 py-0.5 rounded-md">Phần 03</span>
+                                <p class="font-heading font-bold text-sm text-slate-800 dark:text-white mt-2">Tổ chức & Trách nhiệm</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">ĐHĐCĐ là cơ quan tối cao; cổ đông chịu trách nhiệm hữu hạn trong phạm vi vốn góp.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPublicGame(gm) {
+            let extraGameHtml = '';
+            if (gm.enableFlashcard) {
+                extraGameHtml = `
+                    <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 max-w-xl mx-auto text-left">
+                        <h4 class="font-heading font-bold text-center text-indigo-600 dark:text-indigo-400 mb-4">Thẻ Ghi Nhớ Nhanh (Nhấn để xem)</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div onclick="this.querySelector('.ans').classList.toggle('hidden')" class="p-4 rounded-2xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/50 dark:bg-indigo-950/40 cursor-pointer">
+                                <p class="font-bold text-sm text-indigo-900 dark:text-indigo-300">Cổ phần là gì?</p>
+                                <p class="ans hidden text-xs text-slate-600 dark:text-slate-300 mt-2 pt-2 border-t border-indigo-200/60">Các phần bằng nhau của vốn điều lệ.</p>
+                            </div>
+                            <div onclick="this.querySelector('.ans').classList.toggle('hidden')" class="p-4 rounded-2xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/40 cursor-pointer">
+                                <p class="font-bold text-sm text-emerald-900 dark:text-emerald-300">Số lượng cổ đông?</p>
+                                <p class="ans hidden text-xs text-slate-600 dark:text-slate-300 mt-2 pt-2 border-t border-emerald-200/60">Tối thiểu là 3 và không hạn chế tối đa.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            document.getElementById('game-container').innerHTML = `
+                <div class="py-6 space-y-8">
+                    <div>
+                        <svg class="w-28 h-28 mx-auto mb-4 animate-float-slow" viewBox="0 0 120 120" fill="none">
+                            <circle cx="60" cy="60" r="50" fill="#EEF2FF" stroke="#818CF8" stroke-width="2"/>
+                            <rect x="26" y="42" width="68" height="38" rx="19" fill="#4F46E5"/>
+                            <circle cx="44" cy="61" r="8" fill="#ffffff"/>
+                            <circle cx="74" cy="56" r="4" fill="#FDE047"/>
+                            <circle cx="82" cy="64" r="4" fill="#34D399"/>
+                        </svg>
+                        <h3 class="font-heading text-2xl font-extrabold text-slate-800 dark:text-white mb-2">${gm.title}</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm max-w-md mx-auto">${gm.description}</p>
+                        ${extraGameHtml}
+                    </div>
+
+                    <!-- Bộ Thẻ Lật 3D Tương Tác Nhanh (Giúp trang Trò chơi luôn sinh động & hữu ích) -->
+                    <div class="pt-6 border-t border-slate-100 dark:border-slate-800 max-w-4xl mx-auto">
+                        <p class="text-xs font-heading font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-4">
+                            <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Khám Phá Nhanh: Lật Thẻ Thuật Ngữ Doanh Nghiệp (Nhấn vào thẻ để lật 3D)
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div onclick="this.classList.toggle('flipped')" class="flip-card perspective-1000 h-40 cursor-pointer">
+                                <div class="flip-card-inner relative w-full h-full">
+                                    <div class="flip-card-front absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white p-5 flex flex-col items-center justify-center shadow-md">
+                                        <i class="fa-solid fa-coins text-2xl mb-2 text-emerald-100"></i>
+                                        <p class="font-heading font-extrabold text-base">Vốn Điều Lệ</p>
+                                        <span class="text-[11px] opacity-80 mt-1">Nhấn để lật xem định nghĩa</span>
+                                    </div>
+                                    <div class="flip-card-back absolute inset-0 rounded-2xl bg-white dark:bg-slate-800 border-2 border-emerald-500 p-5 flex flex-col items-center justify-center text-center shadow-md">
+                                        <p class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white leading-relaxed">Được chia thành nhiều phần bằng nhau gọi là <span class="text-emerald-600">cổ phần</span>.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div onclick="this.classList.toggle('flipped')" class="flip-card perspective-1000 h-40 cursor-pointer">
+                                <div class="flip-card-inner relative w-full h-full">
+                                    <div class="flip-card-front absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-5 flex flex-col items-center justify-center shadow-md">
+                                        <i class="fa-solid fa-crown text-2xl mb-2 text-indigo-100"></i>
+                                        <p class="font-heading font-extrabold text-base">Đại Hội Đồng Cổ Đông</p>
+                                        <span class="text-[11px] opacity-80 mt-1">Nhấn để lật xem vai trò</span>
+                                    </div>
+                                    <div class="flip-card-back absolute inset-0 rounded-2xl bg-white dark:bg-slate-800 border-2 border-indigo-500 p-5 flex flex-col items-center justify-center text-center shadow-md">
+                                        <p class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white leading-relaxed">Là <span class="text-indigo-600">cơ quan quyết định tối cao</span> của Công ty Cổ phần.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div onclick="this.classList.toggle('flipped')" class="flip-card perspective-1000 h-40 cursor-pointer">
+                                <div class="flip-card-inner relative w-full h-full">
+                                    <div class="flip-card-front absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-500 to-rose-500 text-white p-5 flex flex-col items-center justify-center shadow-md">
+                                        <i class="fa-solid fa-shield-halved text-2xl mb-2 text-amber-100"></i>
+                                        <p class="font-heading font-extrabold text-base">Trách Nhiệm Cổ Đông</p>
+                                        <span class="text-[11px] opacity-80 mt-1">Nhấn để lật xem phạm vi</span>
+                                    </div>
+                                    <div class="flip-card-back absolute inset-0 rounded-2xl bg-white dark:bg-slate-800 border-2 border-amber-500 p-5 flex flex-col items-center justify-center text-center shadow-md">
+                                        <p class="text-xs sm:text-sm font-bold text-slate-800 dark:text-white leading-relaxed">Chịu trách nhiệm về các khoản nợ trong <span class="text-rose-600">phạm vi số vốn đã góp</span>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 5. HỆ THỐNG LÀM BÀI TRẮC NGHIỆM, TÍNH GIỜ & XẾP HẠNG
+        function formatDuration(sec) {
+            const m = Math.floor(sec / 60);
+            const s = sec % 60;
+            return `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+        }
+
+        function startQuiz(e) {
+            e.preventDefault();
+            const name = document.getElementById('input-name').value.trim();
+            const cls = document.getElementById('input-class').value.trim();
+            if (!name || !cls) return;
+
+            currentStudent = { name, class: cls };
+            document.getElementById('lbl-student-name').innerText = name;
+            document.getElementById('lbl-student-class').innerText = cls;
+            document.getElementById('display-student-name').innerText = `${name} (${cls})`;
+            document.getElementById('user-info-badge').classList.remove('hidden');
+
+            document.getElementById('student-form-card').classList.add('hidden');
+            document.getElementById('quiz-taking-card').classList.remove('hidden');
+
+            // Khởi động bộ đếm thời gian làm bài
+            quizElapsedSeconds = 0;
+            document.getElementById('quiz-timer-display').innerText = "00:00";
+            clearInterval(quizTimerInterval);
+            quizTimerInterval = setInterval(() => {
+                quizElapsedSeconds++;
+                document.getElementById('quiz-timer-display').innerText = formatDuration(quizElapsedSeconds);
+            }, 1000);
+
+            renderQuizQuestions();
+        }
+
+        function renderQuizQuestions() {
+            const questions = appState.published.quiz;
+            const container = document.getElementById('quiz-container');
+            let html = '';
+            questions.forEach((q, index) => {
+                html += `
+                    <div class="p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 space-y-3.5 transition hover:border-emerald-300 dark:hover:border-slate-700">
+                        <div class="flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-heading font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">${index + 1}</span>
+                            <p class="font-heading font-bold text-slate-800 dark:text-white text-sm sm:text-base">${q.question}</p>
+                        </div>
+                        <div class="space-y-2.5 pl-0 sm:pl-10">
+                `;
+                q.options.forEach((opt, optIndex) => {
+                    const letters = ['A', 'B', 'C', 'D'];
+                    html += `
+                        <label class="flex items-center gap-3.5 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 cursor-pointer hover:border-emerald-500 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 transition text-sm group">
+                            <input type="radio" name="q${q.id}" value="${optIndex}" class="w-4 h-4 text-emerald-600 focus:ring-emerald-500">
+                            <span class="w-6 h-6 rounded-md bg-slate-100 dark:bg-slate-800 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-950 text-slate-500 group-hover:text-emerald-700 text-xs font-bold flex items-center justify-center shrink-0">${letters[optIndex % 4]}</span>
+                            <span class="text-slate-700 dark:text-slate-200 font-medium">${opt}</span>
+                        </label>
+                    `;
+                });
+                html += `</div></div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function submitQuiz() {
+            clearInterval(quizTimerInterval);
+            const questions = appState.published.quiz;
+            let score = 0;
+            let reviewHtml = '';
+
+            questions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+                const userAns = selected ? parseInt(selected.value) : -1;
+                const isCorrect = userAns === q.correct;
+                if (isCorrect) score++;
+
+                reviewHtml += `
+                    <div class="p-4 sm:p-5 rounded-2xl border ${isCorrect ? 'bg-emerald-50/60 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800' : 'bg-rose-50/60 dark:bg-rose-950/30 border-rose-200 dark:border-rose-800'} text-sm space-y-1.5">
+                        <p class="font-heading font-bold text-slate-800 dark:text-white">Câu ${idx + 1}: ${q.question}</p>
+                        <p class="text-xs font-semibold ${isCorrect ? 'text-emerald-700 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">
+                            ${isCorrect ? '<i class="fa-solid fa-check mr-1"></i> Chính xác!' : `<i class="fa-solid fa-xmark mr-1"></i> Chưa chính xác (Đáp án đúng: ${q.options[q.correct]})`}
+                        </p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 pt-1"><i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> <b>Giải thích:</b> ${q.explanation}</p>
+                    </div>
+                `;
+            });
+
+            const entryId = Date.now();
+            const newRecord = {
+                id: entryId,
+                name: currentStudent.name,
+                class: currentStudent.class,
+                score: score,
+                total: questions.length,
+                timeSpentSeconds: quizElapsedSeconds,
+                submittedAt: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) + ' ' + new Date().toLocaleDateString('vi-VN')
+            };
+
+            appState.published.leaderboard.push(newRecord);
+            appState.draft.leaderboard = clone(appState.published.leaderboard);
+
+            // Sắp xếp điểm cao xếp trước, nếu bằng điểm thì thời gian làm nhanh hơn xếp trước
+            appState.published.leaderboard.sort((a, b) => {
+                if (b.score !== a.score) return b.score - a.score;
+                return (a.timeSpentSeconds || 999) - (b.timeSpentSeconds || 999);
+            });
+
+            persistDatabase();
+            renderAllPublicViews();
+
+            const rank = appState.published.leaderboard.findIndex(item => item.id === entryId) + 1;
+
+            document.getElementById('quiz-taking-card').classList.add('hidden');
+            document.getElementById('quiz-result-card').classList.remove('hidden');
+            document.getElementById('score-summary-text').innerText = `${currentStudent.name} (${currentStudent.class}) đạt ${score} / ${questions.length} điểm`;
+            document.getElementById('ranking-position-text').innerHTML = `🏆 Xếp hạng: <b>#${rank}</b> toàn bảng`;
+            document.getElementById('time-spent-text').innerHTML = `⏱️ Thời gian: <b>${formatDuration(quizElapsedSeconds)}</b>`;
+            document.getElementById('quiz-review-details').innerHTML = reviewHtml;
+            showToast(`Hoàn thành bài làm! Bạn đạt ${score}/${questions.length} điểm.`);
+        }
+
+        function renderLeaderboard() {
+            const tbody = document.getElementById('leaderboard-tbody');
+            const list = appState.published.leaderboard;
+            let html = '';
+            list.forEach((item, index) => {
+                let badge = `<span class="text-slate-500 font-bold">#${index + 1}</span>`;
+                if (index === 0) badge = `<span class="bg-amber-100 text-amber-700 px-2.5 py-1 rounded-lg font-extrabold text-xs">🥇 #1</span>`;
+                else if (index === 1) badge = `<span class="bg-slate-200 text-slate-700 px-2.5 py-1 rounded-lg font-extrabold text-xs">🥈 #2</span>`;
+                else if (index === 2) badge = `<span class="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg font-extrabold text-xs">🥉 #3</span>`;
+
+                html += `
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                        <td class="p-3.5">${badge}</td>
+                        <td class="p-3.5 font-bold text-slate-800 dark:text-white">${item.name}</td>
+                        <td class="p-3.5 text-slate-500 font-medium">${item.class}</td>
+                        <td class="p-3.5 text-xs font-mono text-slate-500">${formatDuration(item.timeSpentSeconds || 45)}</td>
+                        <td class="p-3.5 text-right font-extrabold text-emerald-600 dark:text-emerald-400">${item.score} / ${item.total || 4} điểm</td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function retakeQuiz() {
+            document.getElementById('quiz-result-card').classList.add('hidden');
+            document.getElementById('student-form-card').classList.remove('hidden');
+        }
+
+        // 6. HỆ THỐNG QUẢN TRỊ ADMIN TOÀN DIỆN (CMS)
+        function handleAdminTrigger() {
+            if (isAdminLoggedIn) {
+                switchTab('admin-cms');
+            } else {
+                document.getElementById('admin-login-error').classList.add('hidden');
+                document.getElementById('admin-modal').classList.remove('hidden');
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('admin-user').value.trim();
+            const p = document.getElementById('admin-pass').value.trim();
+
+            if (u === 'admin' && p === 'yen123') {
+                isAdminLoggedIn = true;
+                document.getElementById('admin-login-error').classList.add('hidden');
+                closeAdminModal();
+                document.getElementById('sidebar-admin-item').classList.remove('hidden');
+                document.getElementById('admin-btn-label').innerText = "Mở Bảng CMS";
+                document.querySelectorAll('.admin-only-btn').forEach(b => b.classList.remove('hidden'));
+                loadDraftIntoCMSForms();
+                switchTab('admin-cms');
+                showToast("Đăng nhập Quản trị viên thành công!");
+            } else {
+                document.getElementById('admin-login-error').classList.remove('hidden');
+                showToast("Sai tài khoản hoặc mật khẩu Quản trị!", "rose");
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            document.getElementById('sidebar-admin-item').classList.add('hidden');
+            document.getElementById('admin-btn-label').innerText = "Quản Trị Admin";
+            document.querySelectorAll('.admin-only-btn').forEach(b => b.classList.add('hidden'));
+            switchTab('home');
+            showToast("Đã đăng xuất chế độ Quản trị", "amber");
+        }
+
+        function OnlyAdminOpenCMS(subtabId) {
+            if (!isAdminLoggedIn) return;
+            switchTab('admin-cms');
+            switchAdminSubtab(subtabId);
+        }
+
+        function switchAdminSubtab(subId) {
+            document.querySelectorAll('.admin-subtab').forEach(el => el.classList.remove('active'));
+            document.getElementById(subId).classList.add('active');
+
+            document.querySelectorAll('.cms-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('text-slate-600', 'dark:text-slate-300');
+                if (btn.getAttribute('data-sub') === subId) {
+                    btn.classList.add('bg-indigo-600', 'text-white');
+                    btn.classList.remove('text-slate-600', 'dark:text-slate-300');
+                }
+            });
+        }
+
+        function markUnsavedDraft() {
+            const badge = document.getElementById('cms-status-badge');
+            badge.innerText = "Đang có thay đổi nháp";
+            badge.className = "text-[11px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded-full font-semibold";
+        }
+
+        // Nạp dữ liệu Draft vào các trình chỉnh sửa Admin
+        function loadDraftIntoCMSForms() {
+            const d = appState.draft;
+
+            // 1. Bài học (5 mục độc lập)
+            const lessonsContainer = document.getElementById('cms-lessons-list');
+            let lHtml = '';
+            d.knowledge.forEach((sec, sIdx) => {
+                lHtml += `
+                    <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40 space-y-3">
+                        <div class="flex flex-wrap justify-between items-center gap-2">
+                            <input type="text" value="${sec.title}" oninput="updateSingleLessonTitle(${sIdx}, this.value)" class="font-heading font-bold text-base px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 w-full sm:w-96">
+                            <div class="flex items-center gap-2">
+                                <button onclick="addLessonBullet(${sIdx})" class="px-3 py-1.5 bg-emerald-600 text-white rounded-lg text-xs font-bold">+ Thêm ý</button>
+                                <button onclick="deleteKnowledgeSection(${sIdx})" class="px-3 py-1.5 bg-rose-100 text-rose-600 rounded-lg text-xs font-bold hover:bg-rose-200"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                `;
+                sec.items.forEach((item, iIdx) => {
+                    lHtml += `
+                        <div class="flex items-center gap-2">
+                            <input type="text" value="${item.replace(/"/g, '&quot;')}" oninput="updateSingleLessonBullet(${sIdx}, ${iIdx}, this.value)" class="flex-1 px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm">
+                            <button onclick="removeLessonBullet(${sIdx}, ${iIdx})" class="p-2 text-slate-400 hover:text-rose-500"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    `;
+                });
+                lHtml += `</div></div>`;
+            });
+            lessonsContainer.innerHTML = lHtml;
+
+            // 2. Ví dụ thực tế
+            document.getElementById('cms-cs-title').value = d.caseStudy.title;
+            document.getElementById('cms-cs-story').value = d.caseStudy.story;
+            document.getElementById('cms-cs-h1-title').value = d.caseStudy.highlight1Title;
+            document.getElementById('cms-cs-h1-desc').value = d.caseStudy.highlight1Desc;
+            document.getElementById('cms-cs-h2-title').value = d.caseStudy.highlight2Title;
+            document.getElementById('cms-cs-h2-desc').value = d.caseStudy.highlight2Desc;
+
+            // 3. Video & Game
+            document.getElementById('cms-video-title').value = d.video.title;
+            document.getElementById('cms-video-desc').value = d.video.description;
+            document.getElementById('cms-video-url').value = d.video.embedUrl || '';
+            document.getElementById('cms-game-title').value = d.game.title;
+            document.getElementById('cms-game-desc').value = d.game.description;
+            document.getElementById('cms-game-enable-flashcard').checked = !!d.game.enableFlashcard;
+
+            // 4. Câu hỏi trắc nghiệm
+            renderCMSQuizList();
+
+            // 5. Học sinh & Bảng xếp hạng
+            renderCMSStudentsTable();
+
+            // 6. Branding
+            document.getElementById('cms-brand-logo').value = d.branding.logoText;
+            document.getElementById('cms-brand-title').value = d.branding.siteTitle;
+            document.getElementById('cms-hero-title').value = d.branding.heroTitle;
+            document.getElementById('cms-hero-slogan').value = d.branding.heroSlogan;
+
+            // 7. Lịch sử phiên bản
+            renderCMSRevisions();
+        }
+
+        // Các hàm chỉnh sửa độc lập từng bài học
+        function updateSingleLessonTitle(sIdx, val) {
+            appState.draft.knowledge[sIdx].title = val;
+            markUnsavedDraft();
+        }
+        function updateSingleLessonBullet(sIdx, iIdx, val) {
+            appState.draft.knowledge[sIdx].items[iIdx] = val;
+            markUnsavedDraft();
+        }
+        function addLessonBullet(sIdx) {
+            appState.draft.knowledge[sIdx].items.push("Nội dung kiến thức bổ sung mới...");
+            loadDraftIntoCMSForms();
+            markUnsavedDraft();
+        }
+        function removeLessonBullet(sIdx, iIdx) {
+            appState.draft.knowledge[sIdx].items.splice(iIdx, 1);
+            loadDraftIntoCMSForms();
+            markUnsavedDraft();
+        }
+        function addNewKnowledgeSection() {
+            const newId = Date.now();
+            const count = appState.draft.knowledge.length + 1;
+            appState.draft.knowledge.push({
+                id: newId,
+                title: `${count}. Chuyên mục bổ sung mới`,
+                colorTheme: "emerald",
+                isOrg: false,
+                items: ["Nội dung chi tiết của chuyên mục mới."]
+            });
+            loadDraftIntoCMSForms();
+            markUnsavedDraft();
+        }
+        function deleteKnowledgeSection(sIdx) {
+            openCustomConfirm({
+                title: "Xóa mục kiến thức khỏi bản nháp?",
+                message: "Bạn vẫn có thể khôi phục lại 100% dữ liệu gốc bất cứ lúc nào.",
+                onConfirm: () => {
+                    appState.draft.knowledge.splice(sIdx, 1);
+                    loadDraftIntoCMSForms();
+                    markUnsavedDraft();
+                    showToast("Đã xóa mục khỏi bản nháp", "amber");
+                }
+            });
+        }
+
+        function updateDraftCaseStudy() {
+            appState.draft.caseStudy = {
+                title: document.getElementById('cms-cs-title').value,
+                story: document.getElementById('cms-cs-story').value,
+                highlight1Title: document.getElementById('cms-cs-h1-title').value,
+                highlight1Desc: document.getElementById('cms-cs-h1-desc').value,
+                highlight2Title: document.getElementById('cms-cs-h2-title').value,
+                highlight2Desc: document.getElementById('cms-cs-h2-desc').value
+            };
+            markUnsavedDraft();
+        }
+
+        function updateDraftMedia() {
+            appState.draft.video = {
+                title: document.getElementById('cms-video-title').value,
+                description: document.getElementById('cms-video-desc').value,
+                embedUrl: document.getElementById('cms-video-url').value
+            };
+            appState.draft.game = {
+                title: document.getElementById('cms-game-title').value,
+                description: document.getElementById('cms-game-desc').value,
+                enableFlashcard: document.getElementById('cms-game-enable-flashcard').checked
+            };
+            markUnsavedDraft();
+        }
+
+        function updateDraftBranding() {
+            appState.draft.branding.logoText = document.getElementById('cms-brand-logo').value;
+            appState.draft.branding.siteTitle = document.getElementById('cms-brand-title').value;
+            appState.draft.branding.heroTitle = document.getElementById('cms-hero-title').value;
+            appState.draft.branding.heroSlogan = document.getElementById('cms-hero-slogan').value;
+            markUnsavedDraft();
+        }
+
+        // Quản lý Câu hỏi trắc nghiệm trong CMS
+        function renderCMSQuizList() {
+            const container = document.getElementById('cms-quiz-list');
+            let html = '';
+            appState.draft.quiz.forEach((q, qIdx) => {
+                html += `
+                    <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40 space-y-3">
+                        <div class="flex justify-between items-center gap-2">
+                            <span class="text-xs font-extrabold uppercase px-2.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">Câu hỏi ${qIdx + 1}</span>
+                            <button onclick="deleteQuizQuestion(${qIdx})" class="text-xs text-rose-500 hover:underline font-bold"><i class="fa-solid fa-trash mr-1"></i> Xóa câu hỏi</button>
+                        </div>
+                        <input type="text" value="${q.question.replace(/"/g, '&quot;')}" oninput="appState.draft.quiz[${qIdx}].question = this.value; markUnsavedDraft();" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm font-bold">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                `;
+                q.options.forEach((opt, oIdx) => {
+                    html += `
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="cms-correct-${q.id}" ${q.correct === oIdx ? 'checked' : ''} onchange="appState.draft.quiz[${qIdx}].correct = ${oIdx}; markUnsavedDraft();" title="Chọn làm đáp án đúng">
+                            <input type="text" value="${opt.replace(/"/g, '&quot;')}" oninput="appState.draft.quiz[${qIdx}].options[${oIdx}] = this.value; markUnsavedDraft();" class="flex-1 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs">
+                        </div>
+                    `;
+                });
+                html += `
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-400 uppercase mb-1">Giải thích đáp án:</label>
+                            <input type="text" value="${q.explanation.replace(/"/g, '&quot;')}" oninput="appState.draft.quiz[${qIdx}].explanation = this.value; markUnsavedDraft();" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs">
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function addNewQuizQuestion() {
+            appState.draft.quiz.push({
+                id: Date.now(),
+                question: "Câu hỏi trắc nghiệm mới về Công ty Cổ phần?",
+                options: ["Phương án A", "Phương án B (Đúng)", "Phương án C", "Phương án D"],
+                correct: 1,
+                explanation: "Giải thích chi tiết cho đáp án đúng."
+            });
+            renderCMSQuizList();
+            markUnsavedDraft();
+        }
+
+        function deleteQuizQuestion(qIdx) {
+            openCustomConfirm({
+                title: "Xóa câu hỏi trắc nghiệm?",
+                message: "Câu hỏi này sẽ được gỡ khỏi bản nháp hiện tại.",
+                onConfirm: () => {
+                    appState.draft.quiz.splice(qIdx, 1);
+                    renderCMSQuizList();
+                    markUnsavedDraft();
+                    showToast("Đã xóa câu hỏi khỏi bản nháp", "amber");
+                }
+            });
+        }
+
+        // Quản lý Học sinh & Bảng xếp hạng trong CMS
+        function renderCMSStudentsTable() {
+            const tbody = document.getElementById('cms-students-tbody');
+            let html = '';
+            appState.draft.leaderboard.forEach((st, idx) => {
+                html += `
+                    <tr class="border-b dark:border-slate-800">
+                        <td class="p-3 font-bold text-slate-500">#${idx + 1}</td>
+                        <td class="p-3 font-bold">${st.name}</td>
+                        <td class="p-3">${st.class}</td>
+                        <td class="p-3 font-extrabold text-emerald-600">${st.score} / ${st.total || 4}</td>
+                        <td class="p-3 font-mono text-xs">${formatDuration(st.timeSpentSeconds || 45)}</td>
+                        <td class="p-3 text-xs text-slate-400">${st.submittedAt || 'Mặc định'}</td>
+                        <td class="p-3 text-right">
+                            <button onclick="removeStudentRecord(${idx})" class="text-xs text-rose-500 hover:bg-rose-50 px-2.5 py-1 rounded-lg font-semibold"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function addManualStudentRecord() {
+            const modal = document.getElementById('custom-dialog-modal');
+            document.getElementById('custom-dialog-title').innerText = 'Thêm Kết Quả Học Sinh';
+            document.getElementById('custom-dialog-message').innerText = 'Nhập thông tin học sinh để bổ sung vào bảng xếp hạng:';
+            const inputsBox = document.getElementById('custom-dialog-inputs');
+            inputsBox.classList.remove('hidden');
+            inputsBox.innerHTML = `
+                <input type="text" id="dialog-st-name" placeholder="Họ và tên học sinh (VD: Phạm Minh Tuấn)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs">
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" id="dialog-st-class" value="10A1" placeholder="Lớp" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs">
+                    <input type="number" id="dialog-st-score" value="4" min="0" max="10" placeholder="Điểm" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs">
+                </div>
+            `;
+            modal.classList.remove('hidden');
+
+            document.getElementById('custom-dialog-cancel').onclick = () => modal.classList.add('hidden');
+            document.getElementById('custom-dialog-confirm').onclick = () => {
+                const name = document.getElementById('dialog-st-name').value.trim();
+                const cls = document.getElementById('dialog-st-class').value.trim() || '10A1';
+                const score = parseInt(document.getElementById('dialog-st-score').value) || 4;
+                modal.classList.add('hidden');
+                if (!name) return;
+                appState.draft.leaderboard.push({
+                    id: Date.now(),
+                    name,
+                    class: cls,
+                    score,
+                    total: appState.draft.quiz.length,
+                    timeSpentSeconds: 50,
+                    submittedAt: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) + ' - Admin thêm'
+                });
+                appState.draft.leaderboard.sort((a, b) => b.score - a.score);
+                renderCMSStudentsTable();
+                markUnsavedDraft();
+                showToast(`Đã thêm học sinh ${name} vào bảng nháp!`);
+            };
+        }
+
+        function removeStudentRecord(idx) {
+            openCustomConfirm({
+                title: "Xóa kết quả học sinh?",
+                message: "Bản ghi điểm số của học sinh này sẽ được xóa khỏi bảng nháp.",
+                onConfirm: () => {
+                    appState.draft.leaderboard.splice(idx, 1);
+                    renderCMSStudentsTable();
+                    markUnsavedDraft();
+                }
+            });
+        }
+
+        // 7. LƯU NHÁP, XUẤT BẢN & LỊCH SỬ KHÔI PHỤC (REVISION CONTROL)
+        function saveAdminDraft() {
+            appState.revisions.unshift({
+                id: Date.now(),
+                timestamp: new Date().toLocaleString('vi-VN'),
+                note: "Lưu bản nháp (Chưa xuất bản)",
+                snapshot: clone(appState.draft)
+            });
+            persistDatabase();
+            renderCMSRevisions();
+            const badge = document.getElementById('cms-status-badge');
+            badge.innerText = "Đã lưu nháp";
+            badge.className = "text-[11px] bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-0.5 rounded-full font-semibold";
+            showToast("Đã lưu bản nháp thành công!", "amber");
+        }
+
+        function publishAdminChanges() {
+            appState.published = clone(appState.draft);
+            appState.revisions.unshift({
+                id: Date.now(),
+                timestamp: new Date().toLocaleString('vi-VN'),
+                note: "Xuất bản chính thức lên Website",
+                snapshot: clone(appState.published)
+            });
+            persistDatabase();
+            renderAllPublicViews();
+            renderCMSRevisions();
+            const badge = document.getElementById('cms-status-badge');
+            badge.innerText = "Đã xuất bản";
+            badge.className = "text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-semibold";
+            showToast("Đã xuất bản toàn bộ cập nhật lên trang web!");
+        }
+
+        function restoreOriginalFactoryData() {
+            openCustomConfirm({
+                title: "Khôi phục 100% Nội dung gốc (SGK 10)?",
+                message: "Toàn bộ bài học, câu hỏi, ví dụ và giao diện sẽ được đưa về nguyên trạng dữ liệu chuẩn SGK Giáo dục Kinh tế và Pháp luật 10.",
+                onConfirm: () => {
+                    const factoryCopy = clone(ORIGINAL_IMMUTABLE_DATA);
+                    appState.published = clone(factoryCopy);
+                    appState.draft = clone(factoryCopy);
+                    appState.revisions.unshift({
+                        id: Date.now(),
+                        timestamp: new Date().toLocaleString('vi-VN'),
+                        note: "Khôi phục 100% Nội dung gốc (SGK GDKT&PL 10)",
+                        snapshot: clone(factoryCopy)
+                    });
+                    persistDatabase();
+                    renderAllPublicViews();
+                    loadDraftIntoCMSForms();
+                    showToast("Đã khôi phục nguyên trạng 100% nội dung gốc!");
+                }
+            });
+        }
+
+        function restoreSpecificRevision(revId) {
+            const rev = appState.revisions.find(r => r.id === revId);
+            if (!rev) return;
+            appState.published = clone(rev.snapshot);
+            appState.draft = clone(rev.snapshot);
+            persistDatabase();
+            renderAllPublicViews();
+            loadDraftIntoCMSForms();
+            showToast(`Đã khôi phục phiên bản lúc ${rev.timestamp}`);
+        }
+
+        function renderCMSRevisions() {
+            document.getElementById('revision-count-badge').innerText = appState.revisions.length;
+            const container = document.getElementById('cms-revisions-list');
+            let html = '';
+            appState.revisions.forEach((rev) => {
+                html += `
+                    <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-wrap justify-between items-center gap-3 bg-slate-50/50 dark:bg-slate-800/40">
+                        <div>
+                            <p class="font-heading font-bold text-sm text-slate-800 dark:text-white">${rev.note}</p>
+                            <p class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i> ${rev.timestamp}</p>
+                        </div>
+                        <button onclick="restoreSpecificRevision(${rev.id})" class="px-3.5 py-1.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 hover:bg-indigo-100 rounded-xl text-xs font-bold transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Khôi phục bản này
+                        </button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // 8. ĐIỀU HƯỚNG TAB & GIAO DIỆN DARK/LIGHT MODE
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            const targetEl = document.getElementById(tabId);
+            if (targetEl) targetEl.classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-600', 'text-white', 'shadow-md', 'shadow-emerald-600/20');
+                btn.classList.add('text-slate-600', 'dark:text-slate-300');
+                if (btn.getAttribute('data-target') === tabId) {
+                    btn.classList.add('bg-emerald-600', 'text-white', 'shadow-md', 'shadow-emerald-600/20');
+                    btn.classList.remove('text-slate-600', 'dark:text-slate-300');
+                }
+            });
+
+            // Đóng sidebar trên mobile khi chọn mục
+            document.getElementById('main-sidebar').classList.add('-translate-x-full');
+            const backdrop = document.getElementById('mobile-sidebar-backdrop');
+            if (backdrop) backdrop.classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('main-sidebar');
+            const backdrop = document.getElementById('mobile-sidebar-backdrop');
+            sidebar.classList.toggle('-translate-x-full');
+            if (backdrop) {
+                if (sidebar.classList.contains('-translate-x-full')) {
+                    backdrop.classList.add('hidden');
+                } else {
+                    backdrop.classList.remove('hidden');
+                }
+            }
+        }
+
+        function toggleTheme() {
+            const htmlEl = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (htmlEl.classList.contains('dark')) {
+                htmlEl.classList.remove('dark');
+                icon.className = 'fa-solid fa-moon text-sm';
+            } else {
+                htmlEl.classList.add('dark');
+                icon.className = 'fa-solid fa-sun text-sm text-yellow-400';
+            }
+        }
+
+        window.onload = () => {
+            initDatabase();
+        };
+    </script>
+</body>
+</html>
